@@ -2,10 +2,10 @@
 
 # Grupo 11
 Este es el repositorio del Grupo 11, cuyos integrantes son:
-*Integrante 1- Gabriel Leyton
-*Integrante 2- Joaquin rojo
-*Integrante 3- Camila Rosales 202173631-k 
-*Tutor: Martin Campos
+* Integrante 1- Gabriel Leyton
+* Integrante 2- Joaquin rojo
+* Integrante 3- Camila Rosales 202173631-k 
+* Tutor: Martin Campos
 
 
 ## Getting started
