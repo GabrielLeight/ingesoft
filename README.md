@@ -13,7 +13,8 @@ Puedes acceder a la wiki de este proyecto mediante el siguiente link: https://gi
 
 ## Videos
 * [Video Presentacion Cliente](https://drive.google.com/file/d/1qjFfKDmYmbGe2MRnFKsXgW1qsMdWI0rJ/view?usp=drive_link)
-
+##Material de apoyo presentación:
+* 
 ## Getting started
 
 To make it easy for you to get started with GitLab, here's a list of recommended next steps.
