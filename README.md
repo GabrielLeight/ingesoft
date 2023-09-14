@@ -11,7 +11,7 @@ Este es el repositorio del Grupo 11, cuyos integrantes son:
 
 Puedes acceder a la wiki de este proyecto mediante el siguiente link: https://gitlab.inf.utfsm.cl/grupo-11/proyecto-analisis/-/wikis/home
 
-## videos
+## Videos
 * [Video Presentacion Cliente](https://drive.google.com/file/d/1qjFfKDmYmbGe2MRnFKsXgW1qsMdWI0rJ/view?usp=drive_link)
 
 ## Getting started
