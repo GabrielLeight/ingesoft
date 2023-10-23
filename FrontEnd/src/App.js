@@ -1,5 +1,5 @@
-import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import React, {Fragment} from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -18,6 +18,7 @@ import Home from "./views/Home";
 export default function App() {
 	return (
 		<Router>
+			<>
 			<div>
 				<Header />
 				<Container fluid className="p-0">
@@ -29,26 +30,17 @@ export default function App() {
 							{/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
 							<Routes>
-								<Route path="/users/create">
-									<UserAdd />
-								</Route>
-								<Route path="/users/:id/edit">
-									<UsersEdit />
-								</Route>
-								<Route path="/users/:id">
-									<UsersView />
-								</Route>
-								<Route path="/users">
-									<UserList />
-								</Route>
-								<Route path="/">
-									<Home />
-								</Route>
+								<Route path="/users/create" element={<UserAdd />} />
+								<Route path="/users/:id/edit" element={<UsersEdit />} />
+								<Route path="/users/:id" element={<UsersView />} />
+								<Route path="/users" element={<UserList />} />
+								<Route path="/" element={<Home />} />
 							</Routes>
 						</Col>
 					</Row>
 				</Container>
 			</div>
+			</>
 		</Router>
 	);
 }
