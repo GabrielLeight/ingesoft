@@ -22,12 +22,12 @@ export default function index() {
 				<td>{nombre}</td>
 				<td>{email}</td>
 				<td>
-					<Link to={`users/${id}`}>
-						<a href={`users/${id}`} className="btn btn-success">
+					<Link to={`${id}`}>
+						<a href={`${id}`} className="btn btn-success">
 							Ver
 						</a>
 					</Link>
-					<Link to={`users/${id}/edit`}>
+					<Link to={`${id}/edit`}>
 						<a href={`users/${id}/edit`} className="ml-2 btn btn-primary">
 							Editar
 						</a>
