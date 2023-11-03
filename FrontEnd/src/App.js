@@ -12,8 +12,10 @@ import UsersEdit from "./views/users/edit";
 import UsersView from "./views/users/show";
 import UserList from "./views/users/index";
 import UserAdd from "./views/users/create";
+import Login from "./views/users/login";
 
 import Home from "./views/Home";
+
 
 export default function App() {
 	return (
@@ -35,6 +37,7 @@ export default function App() {
 								<Route path="/users/:id" element={<UsersView />} />
 								<Route path="/users" element={<UserList />} />
 								<Route path="/" element={<Home />} />
+								<Route path="/login/" element={<Login />} />
 							</Routes>
 						</Col>
 					</Row>

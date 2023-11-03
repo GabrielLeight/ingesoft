@@ -8,10 +8,7 @@ export default function Home() {
             <div>
                 Bienvenido a INF236
                 < >
-                <Routes>
-                    <Route path="/login" element={<Login />} />
-                    {/* Other routes specific to the Home component */}
-                </Routes>
+                <Login></Login>
                 </>
             </div>
         )

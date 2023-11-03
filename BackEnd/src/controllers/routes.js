@@ -8,4 +8,5 @@ export default (app) => {
 	app.get('/users/:userId', userController.get);
 	app.put('/users/:userId', userController.update);
 	app.delete('/users/:userId', userController.delete);
+	app.get('/users', userController.login);
 };
