@@ -55,6 +55,19 @@ export default function edit() {
 						placeholder="Ingrese Email"
 					/>
 				</div>
+				<div className="form-group">
+					<label htmlFor="email">Contraseña</label>
+					<input
+						className="form-control"
+						id="password"
+						type="password"
+						value={state.password}
+						onChange={(e) => {
+							setstate({ ...state, password: e.target.value });
+						}}
+						placeholder="Ingrese Contraseña"
+					/>
+				</div>
 				<div className="float-right">
 					<button type="submit" className="btn btn-primary">
 						Guardar

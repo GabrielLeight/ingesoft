@@ -37,7 +37,7 @@ export default function App() {
 								<Route path="/users/:id" element={<UsersView />} />
 								<Route path="/users" element={<UserList />} />
 								<Route path="/" element={<Home />} />
-								<Route path="/login/" element={<Login />} />
+								<Route path="/login" element={<Login />} />
 							</Routes>
 						</Col>
 					</Row>

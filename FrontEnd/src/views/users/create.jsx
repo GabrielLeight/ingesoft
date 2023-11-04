@@ -49,6 +49,18 @@ export default function create() {
 						required
 					/>
 				</div>
+				<div>
+					<label htmlFor="password">Password: 
+					<input
+						type="password"
+						id="password"
+						value={state.password}
+						onChange={(e) => {
+							setstate({ ...state, password: e.target.value });
+						}}
+					/> 
+					</label>
+				</div>
 				<div className="float-right">
 					<button type="submit" className="btn btn-primary">
 						Guardar

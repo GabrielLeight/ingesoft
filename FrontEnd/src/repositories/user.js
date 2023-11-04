@@ -2,7 +2,7 @@ import axios from "axios";
 
 const updateUser = async (id, data) =>
 	axios
-		.put(`${process.env.REACT_APP_BACKEND_URL}/users/${id}`, data);
+		.put(`${process.env.REACT_APP_BACKEND_URL}/users/${id}/edit`, data);
 
 const createUser = async (data) =>
 	axios
@@ -10,7 +10,8 @@ const createUser = async (data) =>
 
 const login = async (data) =>
 	axios
-		.post(`${process.env.REACT_APP_BACKEND_URL}/login`, data);
+		.post(`${process.env.REACT_APP_BACKEND_URL}/login`, data)
+		.then((res) => res.data);
 const deleteUser = async (id) =>
 	axios.delete(`${process.env.REACT_APP_BACKEND_URL}/users/${id}`).then(res => res.data);
 

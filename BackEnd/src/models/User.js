@@ -10,6 +10,11 @@ User.init({
     primaryKey: true,
   },
   nombre: Sequelize.DataTypes.STRING,
+  password:{
+    type: Sequelize.DataTypes.STRING,
+    unique: true,
+    allowNull: false
+  },
   email: {
     type: Sequelize.DataTypes.STRING,
     unique: true,
@@ -17,7 +22,8 @@ User.init({
   }}, {
     sequelize,
     timestamps: true,
-  }
+  },
+  
 );
 
 export {User};

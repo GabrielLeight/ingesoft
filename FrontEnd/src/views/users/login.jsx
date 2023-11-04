@@ -6,29 +6,22 @@ function Login() {
     
   const history = useNavigate ()
   
-    const [state, setstate] = useState({});
+    const [state, setstate] = useState({  
+      email: '', 
+    password: '' 
+  });
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-        const response = await login(state);
-        history.push(`/login/${response.data.id}`);
-      // You can make an HTTP request to your server for authentication here.
-      // For this example, we're assuming a successful login if the email and password are not empty.
-      if (state) {
-        // Simulate a successful login
-        // You would typically make a POST request to your backend API here.
-        
-        alert('Login successful!');
-      } else {
-        
-        alert('Please enter both email and password.');
-      }
-    } catch (error) {
-        
-        alert(error);
-      alert('An error occurred during login.');
-    }
+      const response = await login(state);
+    // Store the token in local storage or a secure place for future use
+      localStorage.setItem('authToken', response.token);
+      history.push(`/users/`);
+		} catch (error) {
+			console.log(error);
+			alert("A ocurrido un error al actualizar");
+		}
   };
 
   return (
@@ -58,7 +51,7 @@ function Login() {
           /> 
           </label>
         </div>
-        <button type="button" onClick={handleLogin}>
+        <button type="submit" onClick={handleLogin}>
           Login
         </button>
       </form>
