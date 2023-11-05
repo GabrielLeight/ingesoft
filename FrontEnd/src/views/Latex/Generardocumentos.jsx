@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './App.css';
+import './GenerarDoc.css';
 import { saveAs } from 'file-saver'; 
 
 const datos = [
@@ -32,7 +32,7 @@ export default function GenerarDoc() {
   }
 
   return (
-    <div className="App">
+    <div className="GenerarDoc">
       <h1>Generador de Documentos LaTeX</h1>
       <button onClick={generarDocumentosLaTeX}>Generar Documentos</button>
       <p>{estadoGeneracion}</p>
