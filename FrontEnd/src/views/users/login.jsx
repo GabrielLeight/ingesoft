@@ -6,20 +6,19 @@ function Login() {
     
   const history = useNavigate ()
   
-    const [state, setstate] = useState({  
-      email: '', 
-    password: '' 
-  });
+    const [state, setstate] = useState({});
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
+      alert(state.email);
+      alert(state.password);
       const response = await login(state);
     // Store the token in local storage or a secure place for future use
       localStorage.setItem('authToken', response.token);
-      history.push(`/users/`);
+      history(`/users/${response.data.id}`);
 		} catch (error) {
-			console.log(error);
+			alert(error);
 			alert("A ocurrido un error al actualizar");
 		}
   };

@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
-import * as fs from 'node:fs';
-import * as latex from 'node:node-latex';
-
+import { saveAs } from 'file-saver'; 
 
 const datos = [
   { nombre: 'Juan', codigoCuenta: '12345', fecha: '3-11-2023' } // se crea un dato x 
@@ -16,22 +14,20 @@ export default function GenerarDoc() {
 
     datos.forEach((data, index) => {
       // Leer la plantilla LaTeX base
-      const template = fs.readFileSync('plantilla.tex', 'utf8');
+      const template = `Your LaTeX template here, with %NOMBRE%, %CODIGO%, %FECHA% placeholders`;
 
-      // Reemplazar marcadores con contenido específico
+      // Replace placeholders with data
       const documentoPersonalizado = template
         .replace('%NOMBRE%', data.nombre)
         .replace('%CODIGO%', data.codigoCuenta)
         .replace('%FECHA%', data.fecha);
 
-      // Guardar el documento personalizado en un archivo
-      const outputFilename = `documento_${index}.tex`;
-      fs.writeFileSync(outputFilename, documentoPersonalizado);
+      // Create a Blob from the LaTeX content
+      const blob = new Blob([documentoPersonalizado], { type: 'application/x-latex' });
 
-  
-      pdfStream.pipe(fs.createWriteStream(`documento_${index}.pdf`));
+      // Save the file using FileSaver.js
+      saveAs(blob, `documento_${index}.tex`);
     });
-
     setEstadoGeneracion('Documentos generados y guardados.');
   }
 
