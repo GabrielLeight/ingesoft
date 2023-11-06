@@ -17,5 +17,4 @@ Puedes acceder a la wiki de este proyecto mediante el siguiente link: https://gi
 ## Material de apoyo presentación:
 * [Diapositivas presentacion cliente(Original)](https://docs.google.com/presentation/d/1cDPqzwzyW2dZeLXzm8rNzM5JfC-VozjF/edit?usp=drive_link&ouid=108713243959893085234&rtpof=true&sd=true)
 
-## Errores presentes dentro de la database:
- name: 'SequelizeDatabaseError',
+## Base funcionando correctamente.
