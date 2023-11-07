@@ -32,7 +32,7 @@ export default function GenerarDoc() {
       \\section{Informacion del informe }
       \\Nombre de la persona:%NOMBRE%
       \\Numero de cuenta:%Numero%
-      \\Fecha de la persona:FECHA%%
+      \\Fecha de la persona:%FECHA%
       \\Valor de uf:%UF%
       \\Total pedido:%VALOR%
       \\Calculo de cuota:%%
