@@ -13,7 +13,7 @@ export default function Simulacion() {
 
             return(
                 <div className="container mt-4">
-
+					<p>{response}</p>
                 </div>
             )
 		} catch (error) {
