@@ -20,15 +20,11 @@ Simulacion.init({
   taza: {
     type: Sequelize.DataTypes.INTEGER,
   },
-  cuotauf: {
-    type: Sequelize.DataTypes.INTEGER,
-  },  
   valorUf: {
     type: Sequelize.DataTypes.INTEGER,
     }}, {
-    sequelize,
-    timestamps: true,
-  },
+    sequelize
+  },  
   
 );
 

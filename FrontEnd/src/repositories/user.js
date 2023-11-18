@@ -26,7 +26,7 @@ const getUser = (id) =>
 		.then((res) => res.data);
 const getUf = (data)=>{
 	axios
-	.post(`${process.env.REACT_APP_BACKEND_URL}/users/${id}`,data)
+	.post(`${process.env.REACT_APP_BACKEND_URL}/GetSims`,data)
 	.then((res) => res.data);
 }
 // eslint-disable-nextline

@@ -15,6 +15,7 @@ import UserAdd from "./views/users/create";
 import Login from "./views/users/login";
 
 import Home from "./views/Home";
+import Simulacion from "./views/Simulacion/simulacion";
 
 
 export default function App() {
@@ -38,6 +39,7 @@ export default function App() {
 								<Route path="/users" element={<UserList />} />
 								<Route path="/" element={<Home />} />
 								<Route path="/login" element={<Login />} />
+								<Route path="/simulacion" element={<Simulacion />} />
 							</Routes>
 						</Col>
 					</Row>

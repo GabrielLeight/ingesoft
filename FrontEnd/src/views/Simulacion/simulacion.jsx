@@ -1,6 +1,7 @@
-
+import React, { useState } from "react";
+import { useNavigate  } from "react-router-dom";
 import { getUf } from "../../repositories/user";
-APIKEY =  "6b1ec4648c7284775f574ec2cd76aef10e557997"
+
 export default function Simulacion() {
 	const history = useNavigate ();
 
@@ -8,8 +9,26 @@ export default function Simulacion() {
 
 	const submitForm = async (e) => {
 		e.preventDefault();
+		const { fecha, ...rest } = state;
+		const selectedDate = new Date(fecha);
+		const year = selectedDate.getFullYear();
+		const month = selectedDate.getMonth() + 1; 
+		const day = selectedDate.getDate();
+		setstate({
+			...rest,
+			year,
+			month,
+			day,
+		});
+	
+		alert(state.fecha);
 		try {
-			const response = getUf(state);
+			const response = getUf({ 
+				...rest,
+				year,
+				month,
+				day,
+			});
 
             return(
                 <div className="container mt-4">
@@ -17,7 +36,6 @@ export default function Simulacion() {
                 </div>
             )
 		} catch (error) {
-			console.log(error);
 			alert("A ocurrido un error al actualizar");
 		}
 	};
@@ -66,6 +84,18 @@ export default function Simulacion() {
 						placeholder="Ingrese Taza"
 						required
 					/>
+					<label htmlFor="taza">Fecha de prestamo:</label>
+					
+				</div>
+				<div className="form-group">
+					<input 
+						type="date"
+						value={state.fecha}
+						onChange={(e) => {
+							setstate({ ...state, fecha: e.target.value });
+						}}
+						placeholder="Ingrese fecha"
+						/>
 				</div>
 				<div className="float-right">
 					<button type="submit" className="btn btn-primary">

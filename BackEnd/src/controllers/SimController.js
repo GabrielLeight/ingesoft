@@ -8,9 +8,9 @@ export default class SimController {
 
 
 	async createSims(req, res) {
-        dia = fecha.dia 
-        mes = fecha.mes
-        año = fecha.año
+        dia = day
+        mes = month
+        año = year
         if (fecha.año){
             let greeting = `${año}/${mes}/${dia}/`;
         }
@@ -29,7 +29,7 @@ export default class SimController {
             mes: req.body.mes,
             year: req.body.año,
 			taza: req.body.taza,
-            uf: req.body.uf
+            cuotaUf: req.body.uf
 		});
 		res.send(simulacion);
 	}

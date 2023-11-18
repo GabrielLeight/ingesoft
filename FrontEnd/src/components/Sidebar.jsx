@@ -12,6 +12,7 @@ export default function Sidebar() {
             <Nav defaultActiveKey="/" className="flex-column sidebar-sticky">
                 <Link to="/"><Nav.Link href="/">Inicio</Nav.Link></Link>
                 <Link to="/users"><Nav.Link href="/users">Usuarios</Nav.Link></Link>
+                <Link to="/simulacion"><Nav.Link href="/simulacion">Simulacion</Nav.Link></Link>
             </Nav>
         </Navbar>
         )
