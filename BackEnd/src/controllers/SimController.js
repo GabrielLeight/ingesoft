@@ -6,35 +6,27 @@ export default class SimController {
 		res.send(simulaciones);
 	}
 
+    async createSims(req, res) {
+        try {
+            const response = await axios.get(
+                "https://api.cmfchile.cl/api-sbifv3/recursos_api/uf?apikey=6b1ec4648c7284775f574ec2cd76aef10e557997&formato=JSON"
+            );
+    
+            const ufstring = response.data;
+            console.log(ufstring.UFs[0].Valor);
+            const simulacion = await Simulacion.create({
+                dia: req.body.day,
+                mes: req.body.month,
+                año: req.body.year,
+                taza: req.body.taza,
+                valorUf: ufstring.UFs[0].Valor,
+            });
 
-	async createSims(req, res) {
-        dia = day
-        mes = month
-        año = year
-        if (fecha.año){
-            let greeting = `${año}/${mes}/${dia}/`;
+            res.send(simulacion);
+        } catch (error) {
+            res.status(500).send({ error: "Internal Server Error" });
         }
-        if (fecha.mes){
-            let greeting = `${año}/${mes}/`;
-        }
-        if (fecha.dia){
-            let greeting = `${año}/${mes}/dias/${dia}/`;
-        }
-        var txt = "https://api.cmfchile.cl/api-sbifv3/recursos_api/uf?apikey=6b1ec4648c7284775f574ec2cd76aef10e557997&formato=JSON"
-        axios
-        .get(`https://api.cmfchile.cl/api-sbifv3/recursos_api/uf?apikey=6b1ec4648c7284775f574ec2cd76aef10e557997&formato=JSON`)
-        .then((res) => res.data);
-		const simulacion = await Simulacion.create({
-			dia: req.body.dia,
-            mes: req.body.mes,
-            year: req.body.año,
-			taza: req.body.taza,
-            cuotaUf: req.body.uf
-		});
-		res.send(simulacion);
-	}
-
-
+    }
 	async deleteSims(req, res) {
 		await Simulacion.destroy({where: {id: req.params.simID}});
 		res.send({status: "ok"});

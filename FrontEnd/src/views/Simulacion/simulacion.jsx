@@ -9,34 +9,29 @@ export default function Simulacion() {
 
 	const submitForm = async (e) => {
 		e.preventDefault();
-		const { fecha, ...rest } = state;
-		const selectedDate = new Date(fecha);
+		alert(state.fecha)
+		const selectedDate = new Date(state.fecha);
 		const year = selectedDate.getFullYear();
-		const month = selectedDate.getMonth() + 1; 
-		const day = selectedDate.getDate();
-		setstate({
-			...rest,
-			year,
-			month,
-			day,
-		});
-	
-		alert(state.fecha);
+		const month = selectedDate.getMonth() + 1; // Month is zero-based
+		const day = selectedDate.getDate() + 1;
 		try {
-			const response = getUf({ 
-				...rest,
+			const response = getUf({
+				valor: state.valor,
+				plazo: state.plazo,
+				taza: state.taza,
 				year,
 				month,
 				day,
 			});
-
-            return(
-                <div className="container mt-4">
+	
+			// Handle the response as needed
+			return (
+				<div className="container mt-4">
 					<p>{response}</p>
-                </div>
-            )
+				</div>
+			);
 		} catch (error) {
-			alert("A ocurrido un error al actualizar");
+			alert("Ha ocurrido un error al actualizar");
 		}
 	};
 

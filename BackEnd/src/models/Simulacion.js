@@ -21,7 +21,7 @@ Simulacion.init({
     type: Sequelize.DataTypes.INTEGER,
   },
   valorUf: {
-    type: Sequelize.DataTypes.INTEGER,
+    type: Sequelize.DataTypes.FLOAT,
     }}, {
     sequelize
   },  
