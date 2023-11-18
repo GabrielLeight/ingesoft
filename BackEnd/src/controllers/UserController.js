@@ -7,7 +7,6 @@ export default class UserController {
 		const users = await User.findAll();
 		res.send(users);
 	}
-
 	async getBynombre(req, res) {
 		const users = await User.findAll({
 			where: {
