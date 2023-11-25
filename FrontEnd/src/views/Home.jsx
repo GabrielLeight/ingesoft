@@ -20,7 +20,7 @@ export default function Home() {
                         // User is not logged in, show the Login component
                         <Login />
                     )}
-                <GenerarDoc></GenerarDoc>
+
                 </>
             </div>
         )

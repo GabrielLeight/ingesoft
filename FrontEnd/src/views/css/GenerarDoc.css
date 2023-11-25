@@ -10,6 +10,10 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     -webkit-text-size-adjust: 100%;
+    width: 75vw;
+    height: 80vh;
+    color: aliceblue;
+    text-align: center;
   }
   
   .GenerarDoc button {
@@ -27,3 +31,22 @@
   .GenerarDoc button:hover {
     border-color: #646cff;
   }
+  .forma{
+    background-color: #f0eae0;
+    height: 60vh;
+    text-align: center;
+
+  }
+  .forma form{
+    color: black;
+    margin: 5rem;
+   
+    
+
+  }
+  .forma form label{
+    text-align:justify;
+    margin: 30px 40PX ;
+
+  }
+ 

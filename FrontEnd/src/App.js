@@ -16,7 +16,8 @@ import Login from "./views/users/login";
 
 import Home from "./views/Home";
 import Simulacion from "./views/Simulacion/simulacion";
-
+import GenerarDoc from "./views/Latex/Generardocumentos";
+import Footer from "./components/Fotter";
 
 export default function App() {
 	return (
@@ -40,10 +41,12 @@ export default function App() {
 								<Route path="/" element={<Home />} />
 								<Route path="/login" element={<Login />} />
 								<Route path="/simulacion" element={<Simulacion />} />
+								<Route path="/Generador" element={<GenerarDoc />} />
 							</Routes>
 						</Col>
 					</Row>
 				</Container>
+				<Footer></Footer>   
 			</div>
 			</>
 		</Router>

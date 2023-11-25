@@ -13,6 +13,7 @@ export default function Sidebar() {
                 <Link to="/"><Nav.Link href="/">Inicio</Nav.Link></Link>
                 <Link to="/users"><Nav.Link href="/users">Usuarios</Nav.Link></Link>
                 <Link to="/simulacion"><Nav.Link href="/simulacion">Simulacion</Nav.Link></Link>
+                <Link to="/Generador"><Nav.Link href="/Generador">Generar informe</Nav.Link></Link>
             </Nav>
         </Navbar>
         )
