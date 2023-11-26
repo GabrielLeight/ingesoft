@@ -8,7 +8,7 @@ export default function Home() {
     const isAuthenticated = localStorage.getItem('authToken') !== null;
     return (
             <div>
-                Bienvenido a INF236
+                
                 < >
                 {isAuthenticated ? (
                         // User is logged in, display other content

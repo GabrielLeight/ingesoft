@@ -9,13 +9,13 @@ export default function Simulacion() {
 
 	const submitForm = async (e) => {
 		e.preventDefault();
-		alert(state.fecha)
 		const selectedDate = new Date(state.fecha);
 		const year = selectedDate.getFullYear();
-		const month = selectedDate.getMonth() + 1; // Month is zero-based
+		const month = selectedDate.getMonth() + 1; 
 		const day = selectedDate.getDate() + 1;
+		alert(state.taza);
 		try {
-			const response = getUf({
+			const response = await getUf({
 				valor: state.valor,
 				plazo: state.plazo,
 				taza: state.taza,
@@ -23,8 +23,7 @@ export default function Simulacion() {
 				month,
 				day,
 			});
-	
-			// Handle the response as needed
+			
 			return (
 				<div className="container mt-4">
 					<p>{response}</p>

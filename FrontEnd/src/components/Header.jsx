@@ -6,12 +6,12 @@ export default function Header() {
     const nombre = useSelector((store => store.username));
 
     return (
-       <Navbar bg="dark" variant="dark" className="d-flex justify-content-between align-items-center">
+       <Navbar style={{backgroundColor: "cornflowerblue"}} className="d-flex justify-content-between align-items-center">
             <Navbar.Brand href="#home">
-            <div>INF236 Boilerplate</div>
+            <div>La clave</div>
         
             </Navbar.Brand>
-            <div className="text-white"> Bienvenido {nombre}</div>
+            <div className="text-white"> Bienvenido!!</div>
         </Navbar>
     )
 }

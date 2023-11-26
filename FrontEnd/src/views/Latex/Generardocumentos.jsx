@@ -156,7 +156,7 @@ export default function GenerarDoc() {
   }
 
   return (
-    <div className="GenerarDoc">
+    <div className="GenerarDoc" style= {{padding: 100}}>
       <h1>Generador de Documentos LaTeX</h1>
 
         <div className='forma'>
