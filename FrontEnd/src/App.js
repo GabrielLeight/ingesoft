@@ -13,6 +13,7 @@ import UsersView from "./views/users/show";
 import UserList from "./views/users/index";
 import UserAdd from "./views/users/create";
 import Login from "./views/users/login";
+import ShowSimulation from "./views/Simulacion/showSimulaciones";
 
 import Home from "./views/Home";
 import Simulacion from "./views/Simulacion/simulacion";
@@ -42,6 +43,7 @@ export default function App() {
 								<Route path="/login" element={<Login />} />
 								<Route path="/simulacion" element={<Simulacion />} />
 								<Route path="/Generador" element={<GenerarDoc />} />
+								<Route path="/GetSims" element={<ShowSimulation/>} />
 							</Routes>
 						</Col>
 					</Row>

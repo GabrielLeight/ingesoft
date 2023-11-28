@@ -26,7 +26,8 @@ function Login() {
   };
 
   return (
-    <div className="container mt-4" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+    <div className="container mt-4" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center',
+      }}>
       <h2>Login</h2>
       <form style={
           { 
@@ -73,7 +74,12 @@ function Login() {
             </div>
           </div>
           <div className="row"  style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <Button variant="primary" type="submit" onClick={handleLogin} >
+        <Button variant="primary" type="submit" onClick={handleLogin} 
+        style={
+          {
+          background: '#87ceeb',
+          color: '#2f4f4f',
+           }}>
           Login
         </Button>
         </div>

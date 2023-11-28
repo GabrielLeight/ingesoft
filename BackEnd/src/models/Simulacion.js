@@ -1,9 +1,9 @@
 import { Sequelize } from 'sequelize';
 import sequelize from '../database.js';
 
-class Simulacion extends Sequelize.Model {};
+class Simulaciones extends Sequelize.Model {};
 
-Simulacion.init({
+Simulaciones.init({
 
   id: {
     type: Sequelize.DataTypes.INTEGER,
@@ -29,4 +29,4 @@ Simulacion.init({
   
 );
 
-export {Simulacion};
+export {Simulaciones};

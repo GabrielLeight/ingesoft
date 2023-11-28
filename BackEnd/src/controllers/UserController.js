@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken';
 const secretKey = "your_secret_key_here";
 
 export default class UserController {
-	 async getAll(req, res) {
+	async getAll(req, res) {
 		const users = await User.findAll();
 		res.send(users);
 	}

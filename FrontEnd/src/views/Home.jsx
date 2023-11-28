@@ -6,6 +6,7 @@ import GenerarDoc from './Latex/Generardocumentos';
 
 export default function Home() {
     const isAuthenticated = localStorage.getItem('authToken') !== null;
+
     return (
             <div>
                 

@@ -19,6 +19,10 @@ const getAllUsers = () =>
 	axios
 		.get(`${process.env.REACT_APP_BACKEND_URL}/users`)
 		.then((res) => res.data);
+		
+const getAllSims = () =>
+	fetch(`${process.env.REACT_APP_BACKEND_URL}/GetAllSims`)
+	.then((res) => res.data);
 
 const getUser = (id) =>
 	axios
@@ -30,4 +34,4 @@ const getUf = (data)=>{
 	.then((res) => res.data);
 }
 // eslint-disable-nextline
-export { deleteUser, updateUser, createUser, getAllUsers, getUser, login, getUf };
+export { deleteUser, updateUser, createUser, getAllUsers, getUser, login, getUf, getAllSims};

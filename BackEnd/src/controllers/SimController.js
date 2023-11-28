@@ -1,9 +1,14 @@
-import { Simulacion } from '../models/Simulacion.js';
+import { Simulaciones } from '../models/Simulacion.js';
 import axios from "axios";
 export default class SimController {
-	 async getAllSims(req, res) {
-		const simulaciones = await Simulacion.findAll();
-		res.send(simulaciones);
+	async getAllSims(req, res) {
+		try {
+            const simulaciones = await Simulaciones.findAll();
+            res.send(simulaciones);
+          } catch (error) {
+            console.error("Error fetching simulations:", error);
+            res.status(500).send("Internal Server Error");
+          }
 	}
 
     async createSims(req, res) {
@@ -30,7 +35,7 @@ export default class SimController {
         }
     }
 	async deleteSims(req, res) {
-		await Simulacion.destroy({where: {id: req.params.simID}});
+		await Simulaciones.destroy({where: {id: req.params.simID}});
 		res.send({status: "ok"});
 	}
 };

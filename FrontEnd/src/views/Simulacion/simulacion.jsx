@@ -38,7 +38,7 @@ export default function Simulacion() {
 		<div className="container mt-4">
 			<form onSubmit={submitForm}>
 				<div className="form-group">
-					<label htmlFor="valor">valor prestamo en UF</label>
+					<label htmlFor="valor" style={{fontWeight: 'bold'}}>Valor prestamo en UF</label>
 					<input
 						className="form-control"
 						id="valor"
@@ -52,7 +52,7 @@ export default function Simulacion() {
 					/>
 				</div>
                 <div className="form-group">
-					<label htmlFor="plazo">plazo de cuotas totales</label>
+					<label htmlFor="plazo" style={{fontWeight: 'bold'}}>Plazo de cuotas totales</label>
 					<input
 						className="form-control"
 						id="plazo"
@@ -61,12 +61,12 @@ export default function Simulacion() {
 						onChange={(e) => {
 							setstate({ ...state, plazo: e.target.value });
 						}}
-						placeholder="Ingrese plazo del interes"
+						placeholder="Ingrese plazo del interés"
 						required
 					/>
 				</div>
                 <div className="form-group">
-					<label htmlFor="taza">Taza de interes</label>
+					<label htmlFor="taza" style={{fontWeight: 'bold'}}>Tasa de interés</label>
 					<input
 						className="form-control"
 						id="taza"
@@ -75,10 +75,11 @@ export default function Simulacion() {
 						onChange={(e) => {
 							setstate({ ...state, taza: e.target.value });
 						}}
-						placeholder="Ingrese Taza"
+						placeholder="Ingrese tasa de interés"
 						required
 					/>
-					<label htmlFor="taza">Fecha de prestamo:</label>
+					<br></br>
+					<label htmlFor="taza" style={{fontWeight: 'bold'}}>Fecha de prestamo:</label>
 					
 				</div>
 				<div className="form-group">

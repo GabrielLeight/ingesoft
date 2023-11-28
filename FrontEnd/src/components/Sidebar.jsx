@@ -8,12 +8,13 @@ import {
 
 export default function Sidebar() {
     return (
-        <Navbar className="bg-light" >
+        <Navbar className="bg-light" style= {{height: 'auto', alignItems:'start', }}>
             <Nav defaultActiveKey="/" className="flex-column sidebar-sticky">
                 <Link to="/"><Nav.Link href="/">Inicio</Nav.Link></Link>
                 <Link to="/users"><Nav.Link href="/users">Usuarios</Nav.Link></Link>
                 <Link to="/simulacion"><Nav.Link href="/simulacion">Simulacion</Nav.Link></Link>
                 <Link to="/Generador"><Nav.Link href="/Generador">Generar informe</Nav.Link></Link>
+                <Link to="/GetSims"><Nav.Link href="/GetSims">Mostrar simulaciones</Nav.Link></Link>
             </Nav>
         </Navbar>
         )

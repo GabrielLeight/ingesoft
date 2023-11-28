@@ -156,11 +156,26 @@ export default function GenerarDoc() {
   }
 
   return (
-    <div className="GenerarDoc" style= {{padding: 100}}>
-      <h1>Generador de Documentos LaTeX</h1>
+    <div className="GenerarDoc" >
 
-        <div className='forma'>
-          <form action="">
+      <div className='forma' 
+      style= {{
+        paddingTop: '0%',
+        color: 'darkslategrey',
+        width: '100%',
+        height: '100%',
+        background: 'white',
+
+      }}>
+          <form action=""
+          style= {{
+            width: '80%',
+            height: '1%',
+            marginBottom: '10',
+            
+            }}
+          >
+            <h1 >Generador de Documentos LaTeX</h1>
             <label htmlFor="">Numero de Id del usuario:</label>
             <br></br>
             <select name="peticion1" id="peticion1" value={peticion1} onChange={(e) => setpeticion1(e.target.value)}>
@@ -173,8 +188,13 @@ export default function GenerarDoc() {
             </select>
           </form>
 
-          <form action="">
-            <label htmlFor="peticion3">Ingrese a la correo a supervisor</label>
+          <form action="" 
+          style= {{
+            width: '80%',
+            height: '1%',
+            marginBottom: '10',
+            }}>
+            <label htmlFor="peticion3">Ingrese el correo del supervisor</label>
             <br></br>
             <select name="peticion2" id="peticion2" value={peticion2} onChange={(e) => setpeticion2(e.target.value)}>
                <option value="0">Ingrese Correo</option>
@@ -182,11 +202,15 @@ export default function GenerarDoc() {
                 <option value="CMF2@ingresa.com">CMF2@ingresa.com</option>
                 <option value="CMF3@ingresa.com">CMF3@ingresa.com</option>
                 <option value="CMF4@ingresa.com">CMF4@ingresa.com</option>
-
             </select>
           </form>
 
-          <form action="">
+          <form action="" style= {{
+            width: '80%',
+            height: '1%',
+            alignItems: 'auto',
+            marginBottom: '10',
+            }}>
             <label htmlFor="peticion3">Indique motivo de derivacion de solicitud :</label>
             <br></br>
             <select name="peticion3" id="peticion3" value={peticion3} onChange={(e) => setpeticion3(e.target.value)}>  
@@ -197,12 +221,14 @@ export default function GenerarDoc() {
                 <option value="Error indeseado">4.Error indeseado</option>
 
             </select>
-          </form>
-
+            <br></br>
+            <br></br>
+          <button onClick={generarDocumentosLaTeX} >Generar Documentos</button></form>
+          
+          <p>{estadoGeneracion}</p>
         </div>
 
-      <button onClick={generarDocumentosLaTeX}>Generar Documentos</button>
-      <p>{estadoGeneracion}</p>
+      
     </div>
   );
 }

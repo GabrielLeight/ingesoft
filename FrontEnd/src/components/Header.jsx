@@ -6,7 +6,7 @@ export default function Header() {
     const nombre = useSelector((store => store.username));
 
     return (
-       <Navbar style={{backgroundColor: "cornflowerblue"}} className="d-flex justify-content-between align-items-center">
+       <Navbar style={{backgroundColor: "#87ceeb"}} className="d-flex justify-content-between align-items-center">
             <Navbar.Brand href="#home">
             <div>La clave</div>
         
