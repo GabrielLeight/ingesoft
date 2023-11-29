@@ -43,7 +43,7 @@ export default function App() {
 								<Route path="/login" element={<Login />} />
 								<Route path="/simulacion" element={<Simulacion />} />
 								<Route path="/Generador" element={<GenerarDoc />} />
-								<Route path="/GetSims" element={<ShowSimulation/>} />
+								<Route path="/sims" element={<ShowSimulation/>} />
 							</Routes>
 						</Col>
 					</Row>

@@ -17,8 +17,14 @@ Simulaciones.init({
   año:{
     type: Sequelize.DataTypes.INTEGER,
   },
+  plazo: {
+    type: Sequelize.DataTypes.INTEGER,
+  },
   taza: {
     type: Sequelize.DataTypes.INTEGER,
+  },
+  valorcredito: {
+    type: Sequelize.DataTypes.FLOAT,
   },
   valorUF: {
     type: Sequelize.DataTypes.FLOAT,

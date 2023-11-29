@@ -28,10 +28,13 @@ const getUser = (id) =>
 	axios
 		.get(`${process.env.REACT_APP_BACKEND_URL}/users/${id}`)
 		.then((res) => res.data);
-const getUf = (data)=>{
+const CreateSims = (data)=>{
 	axios
 	.post(`${process.env.REACT_APP_BACKEND_URL}/CreateSims`,data)
 	.then((res) => res.data);
 }
+const deleteSym = async (id) =>
+	axios.delete(`${process.env.REACT_APP_BACKEND_URL}/sims/${id}`).then(res => res.data);
+	
 // eslint-disable-nextline
-export { deleteUser, updateUser, createUser, getAllUsers, getUser, login, getUf, getAllSims};
+export { deleteUser, updateUser, createUser, getAllUsers, getUser, login, CreateSims, getAllSims,deleteSym};

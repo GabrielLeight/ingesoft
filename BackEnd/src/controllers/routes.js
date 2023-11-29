@@ -9,7 +9,7 @@ export default (app) => {
 	app.put('/users/:userId', userController.update);
 	app.delete('/users/:userId', userController.delete);
 	app.post('/login', userController.login);
-	app.get('/GetAllSims', simController.getAllSims);
-	app.post('/DelSims', simController.deleteSims);
+	app.get('/sims', simController.getAllSims);
+	app.delete('/sims/:simId', simController.deleteSims);
 	app.post('/CreateSims', simController.createSims);
 };

@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from "react";
+import useSWR from "swr";
 import axios from "axios";
+import DeleteFormSym from "../../components/DeleteFormSim";
+import { deleteSym, getAllSims } from "../../repositories/user";
+import Table from "react-bootstrap/Table";
+
 
 export default function ShowSimulation() {
   const [data, setData] = useState(null);
@@ -8,12 +13,12 @@ export default function ShowSimulation() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/GetAllSims`);
+        const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/sims`);
         setData(response.data);
 		console.log(response.data)
       } catch (error) {
         console.error("Error fetching data:", error);
-        setError(error);
+
       }
     };
 
@@ -21,43 +26,45 @@ export default function ShowSimulation() {
   }, []); // Empty dependency array means this effect runs once when the component mounts
   console.log(data)
   return (
-    <div className="container mt-4">
-      <table className="table">
-        <tbody>
+    <div className="container mt-4" style= {{
+      border: '15% ',
+      width: '90%',
+      }}>
+      <Table striped='columns' bordered> 
+      <thead>
+      <tr>
+      <th >ID Simulacion:</th>
+              <th>Dia:</th><th>Mes:</th><th>Año:</th><th>Tasa:</th><th>ValorUF:</th><th>Valor Total Credito:</th> </tr></thead>
           {error && <tr><td>Error loading data</td></tr>}
           {!error && !data && <tr><td>Loading...</td></tr>}
           {data && data.map((item) => (
   			<React.Fragment key={item.id}>
-            <>
-              <tr>
-                <th>ID:</th>
-                <td>{item.id}</td>
-              </tr>
-              <tr>
-                <th>Dia</th>
-                <td>{item.dia}</td>
-              </tr>
-              <tr>
-                <th>Mes</th>
-                <td>{item.mes}</td>
-              </tr>
-              <tr>
-                <th>Año</th>
-                <td>{item.año}</td>
-              </tr>
-              <tr>
-                <th>taza</th>
-                <td>{item.taza}</td>
-              </tr>
-              <tr>
-                <th>ValorUF</th>
-                <td>{item.valorUF}</td>
-              </tr>
-            </>
+            
+            <tbody striped='columns'>  
+            <tr>
+            
+            <td>{item.id}</td>
+            
+            <td>{item.dia}</td>
+            
+            <td>{item.mes}</td>
+            
+            <td>{item.año}</td>
+            
+            <td>{item.taza}</td>
+            
+            <td>{item.valorUF}</td>
+            
+            <td>{item.valorcredito}</td>
+            <td><DeleteFormSym id={item.id} callback={deleteSym} /></td>
+          </tr>
+          </tbody>
+          
 			</React.Fragment>
 			))}
-        </tbody>
-      </table>
+      </Table>
+
+
     </div>
   );
 }

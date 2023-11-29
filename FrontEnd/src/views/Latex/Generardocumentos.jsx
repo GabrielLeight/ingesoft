@@ -161,7 +161,6 @@ export default function GenerarDoc() {
       <div className='forma' 
       style= {{
         paddingTop: '0%',
-        color: 'darkslategrey',
         width: '100%',
         height: '100%',
         background: 'white',
@@ -172,14 +171,13 @@ export default function GenerarDoc() {
             width: '80%',
             height: '1%',
             marginBottom: '10',
-            
             }}
-          >
-            <h1 >Generador de Documentos LaTeX</h1>
+            >
+            <h1  style={{color: 'darkslategrey'}}>Generador de Documentos LaTeX</h1>
             <label htmlFor="">Numero de Id del usuario:</label>
-            <br></br>
+
             <select name="peticion1" id="peticion1" value={peticion1} onChange={(e) => setpeticion1(e.target.value)}>
-                <option value="0">Ingrese Id</option>
+               <option value="0">Ingrese Id</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -194,14 +192,13 @@ export default function GenerarDoc() {
             height: '1%',
             marginBottom: '10',
             }}>
-            <label htmlFor="peticion3">Ingrese el correo del supervisor</label>
-            <br></br>
-            <select name="peticion2" id="peticion2" value={peticion2} onChange={(e) => setpeticion2(e.target.value)}>
-               <option value="0">Ingrese Correo</option>
-                <option value="CMF1@ingresa.com">CMF1@ingresa.com</option>
-                <option value="CMF2@ingresa.com">CMF2@ingresa.com</option>
-                <option value="CMF3@ingresa.com">CMF3@ingresa.com</option>
-                <option value="CMF4@ingresa.com">CMF4@ingresa.com</option>
+              <label htmlFor="peticion3">Ingrese el correo del supervisor</label>
+              <select name="peticion2" id="peticion2" value={peticion2} onChange={(e) => setpeticion2(e.target.value)}>
+                <option value="0">Ingrese Correo</option>
+                  <option value="CMF1@ingresa.com">CMF1@ingresa.com</option>
+                  <option value="CMF2@ingresa.com">CMF2@ingresa.com</option>
+                  <option value="CMF3@ingresa.com">CMF3@ingresa.com</option>
+                  <option value="CMF4@ingresa.com">CMF4@ingresa.com</option>
             </select>
           </form>
 

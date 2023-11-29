@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate  } from "react-router-dom";
-import { getUf } from "../../repositories/user";
+import { CreateSims } from "../../repositories/user";
 
 export default function Simulacion() {
 	const history = useNavigate ();
@@ -15,8 +15,8 @@ export default function Simulacion() {
 		const day = selectedDate.getDate() + 1;
 		alert(state.taza);
 		try {
-			const response = await getUf({
-				valor: state.valor,
+			const response = await CreateSims({
+				valorcredito: state.valor,
 				plazo: state.plazo,
 				taza: state.taza,
 				year,
@@ -26,7 +26,7 @@ export default function Simulacion() {
 			
 			return (
 				<div className="container mt-4">
-					<p>{response}</p>
+					<p>{response.data}</p>
 				</div>
 			);
 		} catch (error) {
