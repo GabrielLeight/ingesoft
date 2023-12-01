@@ -19,10 +19,13 @@ User.init({
     type: Sequelize.DataTypes.STRING,
     unique: true,
     allowNull: false
-  }}, {
+  },permiso: {
+    type: Sequelize.DataTypes.BOOLEAN,} 
+  }, {
     sequelize,
     timestamps: true,
   },
+ 
   
 );
 

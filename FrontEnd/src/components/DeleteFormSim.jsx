@@ -7,7 +7,7 @@ export default function DeleteFormSym({ id, callback }) {
 		e.preventDefault();
 		try {
 			await callback(id);
-			mutate("/sims");
+			mutate(`${process.env.REACT_APP_BACKEND_URL}/sims`, newData, false);
 			alert("Elemento recargado correctamente");
 		} catch (error) {
 			alert("A ocurrido un error al borrar el elemento");
@@ -16,7 +16,7 @@ export default function DeleteFormSym({ id, callback }) {
 	return (
 		<form onSubmit={deleteSim} className="d-inline-block ml-4" action="">
 			<input type="hidden" name="id" value={id} />
-			<button onClick={deleteSim} className="btn btn-danger" type="button">
+			<button onClick={deleteSim} className="btn btn-danger" type="submit">
 				Borrar
 			</button>
 		</form>

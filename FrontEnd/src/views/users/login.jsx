@@ -1,50 +1,60 @@
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
-import { useNavigate  } from "react-router-dom";
+import { Navigate, useNavigate  } from "react-router-dom";
 import { login } from "../../repositories/user";
 
 function Login() {
-  
-    
-  const history = useNavigate ()
+
+  const userEmail = "user@example.com";
+  const navigate = useNavigate ()
   
     const [state, setstate] = useState({});
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      alert(state.email);
-      alert(state.password);
+      const lowercaseEmail = state.email.toLowerCase();
+
+      // Check if the email ends with "@ventas.com"
+      if (lowercaseEmail.endsWith("@ventas.com")){
+        sessionStorage.setItem('permiso', true);
+      }
+      else{
+        sessionStorage.setItem('permiso', false);
+      }
       const response = await login(state);
     // Store the token in local storage or a secure place for future use
-      localStorage.setItem('authToken', response.token);
-      history(`/users/${response.data.id}`);
+
+    
+      sessionStorage.setItem('authToken', JSON.stringify(response));
+      console.log('Navigating to /home');
+      navigate('/home');
+      window.location.reload();
 		} catch (error) {
 			alert(error);
-			alert("A ocurrido un error al actualizar");
 		}
   };
 
   return (
     <div className="container mt-4" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center',
       }}>
-      <h2>Login</h2>
+      <h1>Login</h1>
       <form style={
           { 
             padding: 20,
-            width: '50%',
-            height: '100%',
+            width: '60%',
+            height: '200%',
             background: 'white',
             boxShadow: '0px 4px 10px 2px rgba(0, 0, 0, 0.10)',
             borderRadius: '49px',
             justifyContent: 'center',
             alignItems: 'center',
-          }
+          } 
         }>
           <div className="row"  style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <div className="form-group" >
-              <label htmlFor="email">
-                Email: 
+              <label htmlFor="email" >
+                <h5> Email</h5> 
                 <input
                   type="text"
                   id="email"
@@ -60,7 +70,7 @@ function Login() {
           <div className="row"  style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <div className="form-group" >
               <label htmlFor="password">
-                Password: 
+                <h5> Contraseña</h5>  
                 <input
                   type="password"
                   id="password"

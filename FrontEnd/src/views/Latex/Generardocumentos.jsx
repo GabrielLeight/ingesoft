@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import '../css/GenerarDoc.css';
 import { saveAs } from 'file-saver'; 
+import Row from 'react-bootstrap/esm/Row';
 
 const datos = [
   {
@@ -156,43 +157,43 @@ export default function GenerarDoc() {
   }
 
   return (
-    <div className="GenerarDoc" >
-
-      <div className='forma' 
-      style= {{
-        paddingTop: '0%',
-        width: '100%',
-        height: '100%',
-        background: 'white',
-
-      }}>
+    <>
+      <Row className="no-gutters" style= {{
+            minHeight: '100vh',
+            width: '100%',
+            paddingLeft: '5%',
+            height: '100%',
+            backgroundColor: 'aliceblue',
+            }}>  
           <form action=""
           style= {{
             width: '80%',
-            height: '1%',
-            marginBottom: '10',
+            
             }}
             >
-            <h1  style={{color: 'darkslategrey'}}>Generador de Documentos LaTeX</h1>
-            <label htmlFor="">Numero de Id del usuario:</label>
-
+            <h1  
+            style={{color: 'darkslategrey', 
+            paddingLeft: '20%', 
+            paddingBottom: '5%', 
+            }}
+            >Generador de documentos LaTeX</h1>
+            <label htmlFor="peticion1" style={{fontWeight: 'bold', color: 'darkslategrey', }}>Numero de Id del usuario:</label>
+            <br></br>
             <select name="peticion1" id="peticion1" value={peticion1} onChange={(e) => setpeticion1(e.target.value)}>
-               <option value="0">Ingrese Id</option>
+                <option value="0">Ingrese Id</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
                 <option value="4">4</option>
-
             </select>
           </form>
-
+            
           <form action="" 
           style= {{
             width: '80%',
-            height: '1%',
-            marginBottom: '10',
             }}>
-              <label htmlFor="peticion3">Ingrese el correo del supervisor</label>
+              <label htmlFor="peticion2" style={{fontWeight: 'bold', color: 'darkslategrey'}}>Ingrese el correo del supervisor</label>
+              <br></br>
               <select name="peticion2" id="peticion2" value={peticion2} onChange={(e) => setpeticion2(e.target.value)}>
                 <option value="0">Ingrese Correo</option>
                   <option value="CMF1@ingresa.com">CMF1@ingresa.com</option>
@@ -204,11 +205,9 @@ export default function GenerarDoc() {
 
           <form action="" style= {{
             width: '80%',
-            height: '1%',
-            alignItems: 'auto',
-            marginBottom: '10',
+            marginBottom: '1%',
             }}>
-            <label htmlFor="peticion3">Indique motivo de derivacion de solicitud :</label>
+            <label htmlFor="peticion3" style={{fontWeight: 'bold', color: 'darkslategrey'}}>Indique motivo de derivacion de solicitud :</label>
             <br></br>
             <select name="peticion3" id="peticion3" value={peticion3} onChange={(e) => setpeticion3(e.target.value)}>  
                 <option value="0">Identifique motivo</option>
@@ -220,13 +219,14 @@ export default function GenerarDoc() {
             </select>
             <br></br>
             <br></br>
+            <br></br>
+            <br></br>
           <button onClick={generarDocumentosLaTeX} >Generar Documentos</button></form>
           
           <p>{estadoGeneracion}</p>
-        </div>
 
-      
-    </div>
+      </Row>
+    </>
   );
 }
 

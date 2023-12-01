@@ -2,34 +2,34 @@ import React, { useState, useEffect } from "react";
 import useSWR from "swr";
 import axios from "axios";
 import DeleteFormSym from "../../components/DeleteFormSim";
-import { deleteSym, getAllSims } from "../../repositories/user";
+import { deletePrestamos } from "../../repositories/user";
 import Table from "react-bootstrap/Table";
 import Row from "react-bootstrap/esm/Row";
 import Col from "react-bootstrap/esm/Col";
 import Sidebar from "../../components/Sidebar";
 
-export default function ShowSimulation() {
+export default function ShowPrestamo() {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
 
-    useEffect(() => {
-      const fetchData = async () => {
-        try {
-          const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/sims`);
-          setData(response.data);
-          console.log(response.data)
-        } catch (error) {
-          console.error("Error fetching data:", error);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/mostrarPrestamos`);
+        setData(response.data);
+		    console.log(response.data)
+      } catch (error) {
+        console.error("Error fetching data:", error);
 
-        }
-      };
+      }
+    };
 
-      fetchData();
-    }, []); // Empty dependency array means this effect runs once when the component mounts
-  const deleteSim = async  (e, id) => {
+    fetchData();
+  }, []); // Empty dependency array means this effect runs once when the component mounts
+  const deletePrest = async  (e, id) => {
     try {
-      await deleteSym(id);
-      const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/sims`);
+      await deletePrestamos(id);
+      const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/mostrarPrestamos`);
       const newData = response.data;
   
       // Update the data and trigger a re-render
@@ -60,7 +60,18 @@ export default function ShowSimulation() {
             <thead style={{backgroundColor: 'lightblue '}}>
             <tr>
             <th >ID Simulacion:</th>
-                    <th>Dia:</th><th>Mes:</th><th>Año:</th><th>Tasa:</th><th>ValorUF:</th><th>Valor Total Credito:</th> <th></th></tr></thead>
+                    <th>Valor:</th>
+                    <th>Razon:</th>
+                    <th>Correo:</th>
+                    <th>Nombre Completo:</th>
+                    <th>Numero de meses:</th>
+                    <th>Rut:</th>
+                    <th>Dia:</th>
+                    <th>Mes:</th>
+                    <th>Año:</th>
+                     <th></th>
+                     </tr>
+                     </thead>
                 {error && <tr><td>Error loading data</td></tr>}
                 {!error && !data && <tr><td>Loading...</td></tr>}
                 {data && data.map((item) => (
@@ -71,20 +82,26 @@ export default function ShowSimulation() {
                   
                   <td>{item.id}</td>
                   
+                  <td>{item.valor}</td>
+                  
+                  <td>{item.razon}</td>
+                  
+                  <td>{item.correo}</td>
+                  
+                  <td>{item.nombre}</td>
+                  
+                  <td>{item.numMes}</td>
+                  
+                  <td>{item.rut}</td>
+
                   <td>{item.dia}</td>
-                  
+
                   <td>{item.mes}</td>
-                  
+
                   <td>{item.año}</td>
-                  
-                  <td>{item.taza}</td>
-                  
-                  <td>{item.valorUF}</td>
-                  
-                  <td>{item.valorcredito}</td>
 
                   <td >
-                    <form onSubmit={(e) => deleteSim(e, item.id)} className="d-inline-block ml-4" action="">
+                    <form onSubmit={(e) => deletePrest(e, item.id)} className="d-inline-block ml-4" action="">
                       <input type="hidden" name="id" value={item.id} />
                       <button className="btn btn-danger" type="submit">
                         Borrar

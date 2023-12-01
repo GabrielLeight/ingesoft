@@ -35,6 +35,14 @@ const CreateSims = (data)=>{
 }
 const deleteSym = async (id) =>
 	axios.delete(`${process.env.REACT_APP_BACKEND_URL}/sims/${id}`).then(res => res.data);
+
+const createPrestamos = (data)=>
+	axios
+	.post(`${process.env.REACT_APP_BACKEND_URL}/createPrestamos`,data)
+	.then((res) => res.data);
+
+const deletePrestamos = async (id) =>
+	axios.delete(`${process.env.REACT_APP_BACKEND_URL}/mostrarPrestamos/${id}`).then(res => res.data);
 	
 // eslint-disable-nextline
-export { deleteUser, updateUser, createUser, getAllUsers, getUser, login, CreateSims, getAllSims,deleteSym};
+export { deleteUser, updateUser, createUser, getAllUsers, getUser, login, CreateSims, getAllSims,deleteSym, createPrestamos, deletePrestamos};

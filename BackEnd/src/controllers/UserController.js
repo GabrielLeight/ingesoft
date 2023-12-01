@@ -57,8 +57,8 @@ export default class UserController {
 		
 			// If email and password are valid, generate a JWT token
 			const token = jwt.sign({ userId: user.id }, secretKey, { expiresIn: '1h' });
-		
-			res.json({ token });
+			console.log(token)
+			res.send(token);
 		  } catch (error) {
 			// Handle any potential errors here
 			console.error(error);

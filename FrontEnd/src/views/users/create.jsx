@@ -6,15 +6,21 @@ export default function create() {
 	const history = useNavigate ();
 
 	const [state, setstate] = useState({});
-
+	
 	const submitForm = async (e) => {
 		e.preventDefault();
 		try {
+			const lowercaseEmail = state.email.toLowerCase();
+			if (lowercaseEmail.endsWith("@ventas.com")){
+				setstate({ ...state, permiso: true})
+			  }
+			  else{
+				setstate({ ...state, permiso: false})
+			  }
 			const response = await createUser(state);
-			history.push(`/users/${response.data.id}`);
+			history(`/home`);
 		} catch (error) {
 			console.log(error);
-			alert("A ocurrido un error al actualizar");
 		}
 	};
 

@@ -14,23 +14,28 @@ import UserList from "./views/users/index";
 import UserAdd from "./views/users/create";
 import Login from "./views/users/login";
 import ShowSimulation from "./views/Simulacion/showSimulaciones";
+import ShowPrestamo from "./views/Formulario/Mostrarprestamo";
 
 import Home from "./views/Home";
 import Simulacion from "./views/Simulacion/simulacion";
+import Formulario from "./views/Formulario/FormularioPrestamo";
 import GenerarDoc from "./views/Latex/Generardocumentos";
 import Footer from "./components/Fotter";
 
 export default function App() {
+	const isAuthenticated = JSON.parse(sessionStorage.getItem('authToken'))
 	return (
 		<Router>
 			<>
-			<div>
+			<div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', flex: '1'}}>
 				<Header />
 				<Container fluid className="p-0">
 					<Row className="no-gutters">
-						<Col xs="2">
-							<Sidebar />
-						</Col>
+						
+						{isAuthenticated ? (<Col xs="2">
+							<Sidebar /></Col>
+							): (<Col xs="1"></Col>)}
+						
 						<Col xs="10">
 							{/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
@@ -39,11 +44,14 @@ export default function App() {
 								<Route path="/users/:id/edit" element={<UsersEdit />} />
 								<Route path="/users/:id" element={<UsersView />} />
 								<Route path="/users" element={<UserList />} />
-								<Route path="/" element={<Home />} />
+								<Route path="/home" element={<Home />} />
 								<Route path="/login" element={<Login />} />
 								<Route path="/simulacion" element={<Simulacion />} />
 								<Route path="/Generador" element={<GenerarDoc />} />
+								<Route path="/prestamos" element={<Formulario/>} />
+								<Route path="/Mostrarprestamos" element={<ShowPrestamo/>} />
 								<Route path="/sims" element={<ShowSimulation/>} />
+								
 							</Routes>
 						</Col>
 					</Row>
