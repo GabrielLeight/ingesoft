@@ -21,4 +21,7 @@ Para hacer funcionar correctamente al prototipo, primero tenemos que hacer funci
 
 ## Base funcionando correctamente.
 
+## Entrega final
+- Tanto el video final como el ppt utilizado en la misma se encuentran * [aqui](https://drive.google.com/drive/folders/12hSQhqg6DUh0NcuPd7Yzmub6eiBDSI-X?usp=sharing)
+
 
