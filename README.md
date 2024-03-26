@@ -2,10 +2,12 @@
 
 # Grupo 11
 Este es el repositorio del Grupo 11, cuyos integrantes son:
-* **Integrante 1**- Gabriel Leyton 202173624-7
-* **Integrante 2**- Joaquin Rojo   202173550-k
-* **Integrante 3**- Camila Rosales 202173631-k 
-* **Tutor**: Martin Campos
+* **Integrante 1**- Sharon Andrade 201710516-K
+* **Integrante 2**- Gabriel Leyton 202173624-7
+* **Integrante 3**- Gonzalo Guitierrez  202173604-2
+* **Integrante 4**- Angeline Rogriguez  202173594-1
+
+* **Tutor**: José Southerland
 
 ## Wiki
 
