@@ -8,3 +8,5 @@ Este es el repositorio del Grupo 25, cuyos integrantes son:
 * **Integrante 4**- Angeline Rogriguez  202173594-1
 
 * **Tutor**: José Southerland
+
+En este proyecto se toma nuevamente a la Financiera La Clave, proyecto del paralelo 201 del semestre 2023-2, el cual consistía en la solución de la problemática de la medición de (...) recordar la info
