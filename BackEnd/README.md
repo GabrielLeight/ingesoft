@@ -25,11 +25,11 @@ Para que el proyecto se comunique con la base de datos, así como también, indi
 ```bash
 PORT=8080
 
-DB_HOST=localhost
-DB_PORT=5432
-DB_USERNAME=ayudantia
-DB_PASSWORD=1234567
-DB_DATABASE=aydsw
+DB_HOST=127.0.0.1
+DB_PORT=5433
+DB_USERNAME=postgres
+DB_PASSWORD=general
+DB_DATABASE=Proyecto
 DB_DIALECT=postgres
 ```
 
