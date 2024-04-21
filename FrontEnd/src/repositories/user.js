@@ -17,7 +17,7 @@ const deleteUser = async (id) =>
 
 const getAllUsers = () =>
 	axios
-		.get(`${process.env.REACT_APP_BACKEND_URL}/users`)
+		.get(`${process.env.REACT_APP_BACKEND_URL}/getusers`)
 		.then((res) => res.data);
 		
 const getAllSims = () =>

@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect} from 'react';
 import '../css/GenerarDoc.css';
 import { saveAs } from 'file-saver'; 
 import Row from 'react-bootstrap/esm/Row';
+import { getAllUsers } from "../../repositories/user";
 
 const datos = [
   {
@@ -75,157 +76,100 @@ export default function GenerarDoc() {
   const [peticion2,setpeticion2] = useState('0');
   const [peticion3,setpeticion3] = useState('0');
 
-  const generarDocumentosLaTeX = async () => {
-    setEstadoGeneracion('Generando documentos...');
-    
+  const [datos, setDatos] = useState([]);
+  const [peticion, setPeticion] = useState('0');
+  const [supervisorCorreo, setSupervisorCorreo] = useState('0');
+  const [motivoDerivacion, setMotivoDerivacion] = useState('0');
 
-    const data = datos[(peticion1)];
+  useEffect(() => {
+    fetchData();
+  }, []);
 
-      // Leer la plantilla LaTeX base
-    const template = 
-      `
-      
+  const fetchData = async () => {
+    try {
+      const response = await getAllUsers();
+      alert(JSON.stringify(response[0], null, 2));
+      setDatos(response);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
+
+  const generarDocumentoLaTeX = async () => {
+    if (peticion === '0' || supervisorCorreo === '0' || motivoDerivacion === '0') {
+      alert('Por favor, seleccione todas las opciones.');
+      return;
+    }
+
+    setEstadoGeneracion('Generando documento...');
+
+    const selectedUser = datos.find(user => user.nombre === peticion);
+
+    const template = `
       \\documentclass{article}
-      
-      % Language setting
-      % Replace \`english' with e.g. \`spanish' to change the document language
-      \\usepackage[english]{babel}
-      
-      % Set page size and margins
-      % Replace \`letterpaper' with \`a4paper' for UK/EU standard size
-      \\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
-      
-      % Useful packages
-      \\usepackage{amsmath}
-      \\usepackage{graphicx}
-      \\usepackage[colorlinks=true, allcolors=blue]{hyperref}
-      
       \\title{Informe de financiera}
-      \\author{Nro de peticion: ${data.peticion}}
-      
+      \\author{Nro de peticion: ${selectedUser.peticion}}
       \\begin{document}
       \\maketitle
-      
       \\section{Informacion del informe }
-      Nombre de la persona: ${data.nombre}\\\\
-      Numero de cuenta: ${data.codigoCuenta}\\\\
-      Fecha de la persona: ${data.fecha}
+      Nombre de la persona: ${selectedUser.nombre}\\\\
+      Numero de cuenta: ${selectedUser.codigoCuenta}\\\\
+      Fecha de la persona: ${selectedUser.fecha}
       Informacion sensible: no\\\\
-      Valor de uf: ${data.ValorUF}\\\\
-      Total pedido: ${data.Total}\\\\
-      Calculo de cuota: \\\\
-      Numero de cuotas: \\\\
-      Valor de cada interes: ${data.Interes}\\\\
-      
       \\section{Comentarios}
-      
       \\subsection{Comentarios de venta}
-      
       aqui se va añadir informacion 
-      
       \\subsection{Comentarios de analistas }
-      
       aqui se va añadir informacion que corresponde alguna informacion que quiera dejar costancia al momento de enviar este informe y quede guardado en ese momento 
-      
       \\end{document}
-      `
-      ;
+    `;
 
-      // Replace placeholders with data
-      const documentoPersonalizado = template
-        .replace('%peticion%',data.peticion)
-        .replace('%NOMBRE%',data.Nombre)
-        .replace('%CODIGO%', data.codigoCuenta)
-        .replace('%UF%',data.ValorUF)
-        .replace('%VALOR%',data.Total)
-        .replace('%Numero%',data.Nro)
-        .replace('%Interes%',data.Interes)
-        .replace('%FECHA%', data.fecha)
-        .replace('%P1%', peticion1)
-        .replace('%P2%', peticion2)
-        .replace('%P3%', peticion3);
-      // Create a Blob from the LaTeX content
-      const blob = new Blob([documentoPersonalizado], { type: 'application/x-latex' });
+    const blob = new Blob([template], { type: 'application/x-latex' });
+    saveAs(blob, `Informe_Financiera_${selectedUser.peticion}.tex`);
 
-      // Save the file using FileSaver.js
-      saveAs(blob, `Informe_Financira_`+peticion3+`.tex`);
-    
-    setEstadoGeneracion('Documentos generados y guardados.');
- 
-    alert('Se ha enviado el informa a:' + peticion2);
-  
-  }
+    setEstadoGeneracion('Documento generado y guardado.');
+  };
 
   return (
     <>
-      <Row className="no-gutters" style= {{
-            minHeight: '100vh',
-            width: '100%',
-            paddingLeft: '5%',
-            height: '100%',
-            backgroundColor: 'aliceblue',
-            }}>  
-          <form action=""
-          style= {{
-            width: '80%',
-            
-            }}
-            >
-            <h1  
-            style={{color: 'darkslategrey', 
-            paddingLeft: '20%', 
-            paddingBottom: '5%', 
-            }}
-            >Generador de documentos LaTeX</h1>
-            <label htmlFor="peticion1" style={{fontWeight: 'bold', color: 'darkslategrey', }}>Numero de Id del usuario:</label>
-            <br></br>
-            <select name="peticion1" id="peticion1" value={peticion1} onChange={(e) => setpeticion1(e.target.value)}>
-                <option value="0">Ingrese Id</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-            </select>
-          </form>
-            
-          <form action="" 
-          style= {{
-            width: '80%',
-            }}>
-              <label htmlFor="peticion2" style={{fontWeight: 'bold', color: 'darkslategrey'}}>Ingrese el correo del supervisor</label>
-              <br></br>
-              <select name="peticion2" id="peticion2" value={peticion2} onChange={(e) => setpeticion2(e.target.value)}>
-                <option value="0">Ingrese Correo</option>
-                  <option value="CMF1@ingresa.com">CMF1@ingresa.com</option>
-                  <option value="CMF2@ingresa.com">CMF2@ingresa.com</option>
-                  <option value="CMF3@ingresa.com">CMF3@ingresa.com</option>
-                  <option value="CMF4@ingresa.com">CMF4@ingresa.com</option>
-            </select>
-          </form>
-
-          <form action="" style= {{
-            width: '80%',
-            marginBottom: '1%',
-            }}>
-            <label htmlFor="peticion3" style={{fontWeight: 'bold', color: 'darkslategrey'}}>Indique motivo de derivacion de solicitud :</label>
-            <br></br>
-            <select name="peticion3" id="peticion3" value={peticion3} onChange={(e) => setpeticion3(e.target.value)}>  
-                <option value="0">Identifique motivo</option>
-                <option value="Antecedentes">1.Antecedentes</option>
-                <option value="Motivos Externos">2.Motivos Externos</option>
-                <option value="Problema">3.Problema de comprobacion</option>
-                <option value="Error indeseado">4.Error indeseado</option>
-
-            </select>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-          <button onClick={generarDocumentosLaTeX} >Generar Documentos</button></form>
-          
-          <p>{estadoGeneracion}</p>
-
-      </Row>
+      <Row className="no-gutters" style={{ minHeight: '100vh', width: '100%', paddingLeft: '5%', height: '100%', backgroundColor: 'aliceblue' }}>  
+      <form style={{ width: '80%' }}>
+        <h1 style={{ color: 'darkslategrey', paddingLeft: '20%', paddingBottom: '5%' }}>Generador de documentos LaTeX</h1>
+        <label htmlFor="peticion">Número de ID del usuario:</label>
+        <br />
+        <select name="peticion" id="peticion" value={peticion} onChange={(e) => setPeticion(e.target.value)}>
+          <option value="0">Seleccione un usuario</option>
+          {datos.map(user => (
+            <option key={user.nombre} value={user.nombre}>{user.nombre}</option>
+          ))}
+        </select>
+      </form>
+      <form style={{ width: '80%' }}>
+        <label htmlFor="supervisorCorreo">Ingrese el correo del supervisor:</label>
+        <br />
+        <select name="supervisorCorreo" id="supervisorCorreo" value={supervisorCorreo} onChange={(e) => setSupervisorCorreo(e.target.value)}>
+          <option value="0">Seleccione un correo</option>
+          <option value="CMF1@ingresa.com">CMF1@ingresa.com</option>
+          <option value="CMF2@ingresa.com">CMF2@ingresa.com</option>
+          <option value="CMF3@ingresa.com">CMF3@ingresa.com</option>
+          <option value="CMF4@ingresa.com">CMF4@ingresa.com</option>
+        </select>
+      </form>
+      <form style={{ width: '80%', marginBottom: '1%' }}>
+        <label htmlFor="motivoDerivacion">Indique motivo de derivación de solicitud:</label>
+        <br />
+        <select name="motivoDerivacion" id="motivoDerivacion" value={motivoDerivacion} onChange={(e) => setMotivoDerivacion(e.target.value)}>
+          <option value="0">Seleccione un motivo</option>
+          <option value="Antecedentes">1. Antecedentes</option>
+          <option value="Motivos Externos">2. Motivos Externos</option>
+          <option value="Problema">3. Problema de comprobación</option>
+          <option value="Error indeseado">4. Error indeseado</option>
+        </select>
+        <br /><br /><br /><br />
+        <button onClick={generarDocumentoLaTeX}>Generar Documento</button>
+      </form>
+      <p>{estadoGeneracion}</p>
+    </Row>
     </>
   );
 }

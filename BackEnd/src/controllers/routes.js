@@ -5,7 +5,7 @@
 		const userController = new UserController();
 		const simController = new SimController();
 		const prestamoControlle = new PrestamoController();
-		app.get('/users', userController.getAll);
+		app.get('/getusers', userController.getAll);
 		app.post('/users', userController.create);
 		app.get('/users/:userId', userController.get);
 		app.put('/users/:userId', userController.update);
