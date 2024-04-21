@@ -19,6 +19,14 @@ function Login() {
         sessionStorage.setItem('permiso', true);
         sessionStorage.setItem('ejecutivo',lowercaseEmail);
       }
+      else if (lowercaseEmail.endsWith("@analizador.com")){
+        sessionStorage.setItem('permiso', true);
+        sessionStorage.setItem('analizador',lowercaseEmail);
+      }
+      else if (lowercaseEmail.endsWith("@supervisor.com")){
+        sessionStorage.setItem('permiso', true);
+        sessionStorage.setItem('supervisor',lowercaseEmail);
+      }
       else{
         sessionStorage.setItem('permiso', false);
       }
