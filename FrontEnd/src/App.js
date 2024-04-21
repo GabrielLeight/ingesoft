@@ -45,7 +45,7 @@ export default function App() {
                         )}
                         <Col xs="10">
                             <Routes>
-                                <Route path="/" element={<Public />} />
+                                <Route path="/" element={<Home />} />
                                 <Route path="/home" element={<Home />} />
                                 <Route path="/private" element={<PrivateRoute />}>
                                     <Route path="users/create" element={<UserAdd />} />
