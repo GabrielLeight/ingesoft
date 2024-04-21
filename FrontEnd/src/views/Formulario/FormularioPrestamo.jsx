@@ -27,6 +27,7 @@ export default function Formulario() {
 				dia : day,
                 mes : month,
                 año : year,
+				ejecutivo: sessionStorage.getItem('ejecutivo'),
 			});
 			
 			return (

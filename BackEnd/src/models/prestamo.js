@@ -16,6 +16,9 @@ Prestamo.init({
   correo: {
     type: Sequelize.DataTypes.STRING,
   },
+  ejecutivo: {
+    type: Sequelize.DataTypes.STRING,
+  },
   nombre: {
     type: Sequelize.DataTypes.STRING,
   },

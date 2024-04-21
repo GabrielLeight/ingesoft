@@ -3,7 +3,15 @@ import axios from "axios";
 export default class PrestamoController {
     async mostrarPrestamos(req,res){
         try {
-            const Prestamos = await Prestamo.findAll();
+            const ejec = req.body.ejecutivo;
+            console.log("Ejecutivo")
+            console.log(ejec)
+            const Prestamos = await Prestamo.findAll({
+                where: {
+                    ejecutivo: ejec
+                }
+            });
+            console.log(Prestamos)
             res.send(Prestamos);
           } catch (error) {
             console.error("Error fetching simulations:", error);
@@ -20,6 +28,7 @@ export default class PrestamoController {
         const correo = req.body.correo;
         const nombre = req.body.nombre;
         const rut = req.body.rut;
+        const ejec = req.body.ejecutivo;
 
         try {
             
@@ -32,7 +41,8 @@ export default class PrestamoController {
                 valor: valor,
                 correo: correo,
                 nombre: nombre,
-                rut: rut
+                rut: rut,
+                ejecutivo: ejec
 
             });
             

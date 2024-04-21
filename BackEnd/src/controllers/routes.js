@@ -15,6 +15,6 @@
 		app.delete('/sims/:simId', simController.deleteSims);
 		app.post('/CreateSims', simController.createSims);
 		app.post('/createPrestamos', prestamoControlle.createPrestamos);
-		app.get('/mostrarPrestamos', prestamoControlle.mostrarPrestamos);
-		app.delete('/mostrarPrestamos/:prestId', prestamoControlle.deletePrestamos);
+		app.post('/mostrarPrestamos', prestamoControlle.mostrarPrestamos);
+		app.delete('/deletePrestamos/:prestId', prestamoControlle.deletePrestamos);
 	};

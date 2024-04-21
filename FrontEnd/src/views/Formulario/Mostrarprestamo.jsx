@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import useSWR from "swr";
 import axios from "axios";
 import DeleteFormSym from "../../components/DeleteFormSim";
-import { deletePrestamos } from "../../repositories/user";
+import { deletePrestamos , getPrestamos } from "../../repositories/user";
 import Table from "react-bootstrap/Table";
 import Row from "react-bootstrap/esm/Row";
 import Col from "react-bootstrap/esm/Col";
@@ -15,8 +15,12 @@ export default function ShowPrestamo() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/mostrarPrestamos`);
-        setData(response.data);
+        alert("Actualizado");
+        const ejec = sessionStorage.getItem('ejecutivo')
+        const response = await getPrestamos({
+          ejecutivo: ejec,
+        });
+        setData(response);
 		    console.log(response.data)
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -69,7 +73,6 @@ export default function ShowPrestamo() {
                     <th>Dia:</th>
                     <th>Mes:</th>
                     <th>Año:</th>
-                     <th></th>
                      </tr>
                      </thead>
                 {error && <tr><td>Error loading data</td></tr>}

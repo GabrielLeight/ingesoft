@@ -14,17 +14,17 @@ function Login() {
     e.preventDefault();
     try {
       const lowercaseEmail = state.email.toLowerCase();
-
       // Check if the email ends with "@ventas.com"
       if (lowercaseEmail.endsWith("@ventas.com")){
         sessionStorage.setItem('permiso', true);
+        sessionStorage.setItem('ejecutivo',lowercaseEmail);
       }
       else{
         sessionStorage.setItem('permiso', false);
       }
       const response = await login(state);
     // Store the token in local storage or a secure place for future use
-
+      alert(response);
     
       sessionStorage.setItem('authToken', JSON.stringify(response));
       console.log('Navigating to /home');

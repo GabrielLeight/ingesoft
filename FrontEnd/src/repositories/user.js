@@ -42,7 +42,12 @@ const createPrestamos = (data)=>
 	.then((res) => res.data);
 
 const deletePrestamos = async (id) =>
-	axios.delete(`${process.env.REACT_APP_BACKEND_URL}/mostrarPrestamos/${id}`).then(res => res.data);
+	axios.delete(`${process.env.REACT_APP_BACKEND_URL}/deletePrestamos/${id}`).then(res => res.data);
 	
+const getPrestamos = (data)=>
+	axios
+	.post(`${process.env.REACT_APP_BACKEND_URL}/mostrarPrestamos`,data)
+	.then((res) => res.data);
+
 // eslint-disable-nextline
-export { deleteUser, updateUser, createUser, getAllUsers, getUser, login, CreateSims, getAllSims,deleteSym, createPrestamos, deletePrestamos};
+export { deleteUser, updateUser, createUser, getAllUsers, getUser, login, CreateSims, getAllSims,deleteSym, createPrestamos, deletePrestamos , getPrestamos};
