@@ -21,14 +21,15 @@ npm install --save-dev sequelize-cli
 ### Configurar las Variables de Entorno
 
 Para que el proyecto se comunique con la base de datos, así como también, indicar en qué púerto escuchar peticiones, se debe renombrar el archivo **.env.example** a **.env**, luego abrirlo y configurarlo con los datos de su base de datos:
-
+(Usamos Postgres para el fatabase)
 ```bash
+
 PORT=8080
 
 DB_HOST=127.0.0.1
 DB_PORT=5433
 DB_USERNAME=postgres
-DB_PASSWORD=general
+DB_PASSWORD=contrasena
 DB_DATABASE=Proyecto
 DB_DIALECT=postgres
 ```

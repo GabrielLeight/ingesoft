@@ -15,7 +15,6 @@ export default function ShowPrestamo() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        alert("Actualizado");
         const ejec = sessionStorage.getItem('ejecutivo')
         const response = await getPrestamos({
           ejecutivo: ejec,
