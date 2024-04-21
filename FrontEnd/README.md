@@ -36,6 +36,11 @@ El proyecto además incluye configuraciones para Eslint y Prettier, las cuales a
 ## Configuración
 
 Copiar el archivo .env.example a .env y configurarlo con la URL correcta para el Backend, por defecto este es el puerto 8080
+(Usamos Postgres para el fatabase):
+Ejemplo de .env:
+```bash
+REACT_APP_BACKEND_URL="http://127.0.0.1:8080"
+```
 ## Ejecución
 
 ```bash
