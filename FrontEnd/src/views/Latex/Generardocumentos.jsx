@@ -104,7 +104,7 @@ export default function GenerarDoc() {
     setEstadoGeneracion('Generando documento...');
 
     const selectedUser = datos.find(user => user.nombre === peticion);
-
+    
     const template = `
       \\documentclass{article}
       \\title{Informe de financiera}
@@ -113,7 +113,7 @@ export default function GenerarDoc() {
       \\maketitle
       \\section{Informacion del informe }
       Nombre de la persona: ${selectedUser.nombre}\\\\
-      Numero de cuenta: ${selectedUser.codigoCuenta}\\\\
+      Numero de cuenta: ${selectedUser.id}\\\\
       Fecha de la persona: ${selectedUser.fecha}
       Informacion sensible: no\\\\
       \\section{Comentarios}
@@ -148,11 +148,11 @@ export default function GenerarDoc() {
         <label htmlFor="supervisorCorreo">Ingrese el correo del supervisor:</label>
         <br />
         <select name="supervisorCorreo" id="supervisorCorreo" value={supervisorCorreo} onChange={(e) => setSupervisorCorreo(e.target.value)}>
-          <option value="0">Seleccione un correo</option>
-          <option value="CMF1@ingresa.com">CMF1@ingresa.com</option>
-          <option value="CMF2@ingresa.com">CMF2@ingresa.com</option>
-          <option value="CMF3@ingresa.com">CMF3@ingresa.com</option>
-          <option value="CMF4@ingresa.com">CMF4@ingresa.com</option>
+          {datos
+            .filter(user => user.email.includes('@ventas'))
+              .map(user => (
+              <option key={user.nombre} value={user.email}>{user.email}</option>
+            ))}
         </select>
       </form>
       <form style={{ width: '80%', marginBottom: '1%' }}>
