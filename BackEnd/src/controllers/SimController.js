@@ -41,8 +41,10 @@ export default class SimController {
                 valorUF: ufValueFloat,
             });
     
-            res.sendstatus(200);
-        } catch (error) {   
+            res.status(200);
+        } catch (error) {  
+            console.log(error);
+            res.status(500).send({ error: "Internal Server Error" }); 
         }
     }
 	async deleteSims(req, res) {

@@ -105,6 +105,7 @@ export default function GenerarDoc() {
 
     const selectedUser = datos.find(user => user.nombre === peticion);
     
+    
     const template = `
       \\documentclass{article}
       \\title{Informe de financiera}

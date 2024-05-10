@@ -32,7 +32,7 @@ export default class PrestamoController {
 
         try {
             
-            const simulacion = await Prestamo.create({
+            const prestamodata = await Prestamo.create({
                 dia: day,
                 mes: month,
                 año: year,
@@ -46,7 +46,7 @@ export default class PrestamoController {
 
             });
             
-            res.send(simulacion.data);
+            res.send(prestamodata);
             } catch (error) {   
             console.log(error);
             res.status(500).send({ error: "Internal Server Error" });

@@ -29,7 +29,7 @@ export default function Formulario() {
                 año : year,
 				ejecutivo: sessionStorage.getItem('ejecutivo'),
 			});
-			
+			alert(JSON.stringify(response))
 			return (
 				<div className="container mt-4">
 					<p>Este prestamo se ha guardado correctamente. </p>
