@@ -24,9 +24,9 @@ const getAllSims = () =>
 	fetch(`${process.env.REACT_APP_BACKEND_URL}/GetAllSims`)
 	.then((res) => res.data);
 
-const GetSim = (data)=>
+const getPrestamo = (data)=>
 	axios
-	.post(`${process.env.REACT_APP_BACKEND_URL}/GetSim`,data)
+	.post(`${process.env.REACT_APP_BACKEND_URL}/getPrestamo`,data)
 	.then((res) => res.data);
 
 const getUser = (id) =>
@@ -55,4 +55,4 @@ const getPrestamos = (data)=>
 	.then((res) => res.data);
 
 // eslint-disable-nextline
-export { deleteUser, updateUser, createUser, getAllUsers, getUser, login, CreateSims, getAllSims,deleteSym, createPrestamos, deletePrestamos , getPrestamos, GetSim};
+export { deleteUser, updateUser, createUser, getAllUsers, getUser, login, CreateSims, getAllSims,deleteSym, createPrestamos, deletePrestamos , getPrestamos, getPrestamo};

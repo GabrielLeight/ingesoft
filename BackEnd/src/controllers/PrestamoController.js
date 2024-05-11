@@ -18,6 +18,23 @@ export default class PrestamoController {
             res.status(500).send("Internal Server Error");
           }
     }
+    async getPrestamo(req,res){
+        try {
+            const correo = req.body.correo;
+            console.log("correo")
+            console.log(correo)
+            const Prestamos = await Prestamo.findAll({
+                where: {
+                    correo: correo
+                }
+            });
+            console.log(Prestamos[0].id)
+            res.send(Prestamos);
+          } catch (error) {
+            console.error("Error fetching simulations:", error);
+            res.status(500).send("Internal Server Error");
+          }
+    }
     async createPrestamos(req, res) {
         const year =  req.body.año;              // Replace with the desired year
         const month = req.body.mes;               // Replace with the desired month (1-12)

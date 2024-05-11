@@ -2,18 +2,32 @@ import React, { useState , useEffect} from 'react';
 import '../css/GenerarDoc.css';
 import { saveAs } from 'file-saver'; 
 import Row from 'react-bootstrap/esm/Row';
-import { getAllUsers } from "../../repositories/user";
+import { getAllUsers,getPrestamo } from "../../repositories/user";
 
 export default function GenerarDocAn() {
   const [estadoGeneracion, setEstadoGeneracion] = useState('');
-  const [peticion1,setpeticion1] = useState('0');
-  const [peticion2,setpeticion2] = useState('0');
-  const [peticion3,setpeticion3] = useState('0');
+  const [Correo,setCorreo] = useState('0');
+
 
   const [datos, setDatos] = useState([]);
   const [peticion, setPeticion] = useState('0');
-  const [supervisorCorreo, setSupervisorCorreo] = useState('0');
+  const [prestamos, setPrestamos] = useState([]);
   const [motivoDerivacion, setMotivoDerivacion] = useState('0');
+
+  useEffect(() => {
+    const fetchPrestamosData = async () => {
+      try {
+        if (peticion !== '0') {
+          const response2 = await getPrestamo({ correo: peticion });
+          setPrestamos(response2);
+        }
+      } catch (error) {
+        console.error('Error fetching prestamos data:', error);
+      }
+    };
+
+    fetchPrestamosData();
+  }, [peticion]);
 
   useEffect(() => {
     fetchData();
@@ -22,7 +36,6 @@ export default function GenerarDocAn() {
   const fetchData = async () => {
     try {
       const response = await getAllUsers();
-      alert(JSON.stringify(response[0], null, 2));
       setDatos(response);
     } catch (error) {
       console.error('Error fetching data:', error);
@@ -37,19 +50,16 @@ export default function GenerarDocAn() {
 
     setEstadoGeneracion('Generando documento...');
 
-    const selectedUser = datos.find(user => user.nombre === peticion);
-    
-    const correo = user.email
+    const selectedUser = datos.find(user => user.email === peticion);
+    alert(selectedUser.email)
     try {
-        const response = await GetSim({
-            correo: correo,
-        });
-        alert(JSON.stringify(response));
-        setDatos(response);
-      } catch (error) {
+        const response2 = await getPrestamo({ correo:selectedUser.email });
+        alert(response2[0].id)
+        
+    } catch (error) {
         console.error('Error fetching data:', error);
-      }
-
+    }
+    /* 
     const template = `
       \\documentclass{article}
       \\title{Informe de financiera}
@@ -71,7 +81,7 @@ export default function GenerarDocAn() {
 
     const blob = new Blob([template], { type: 'application/x-latex' });
     saveAs(blob, `Informe_Financiera_${selectedUser.peticion}.tex`);
-
+    */
     setEstadoGeneracion('Documento generado y guardado.');
   };
 
@@ -99,14 +109,26 @@ export default function GenerarDocAn() {
         <select name="peticion" id="peticion" value={peticion} onChange={(e) => setPeticion(e.target.value)}>
           <option value="0">Seleccione un usuario</option>
           {datos.map(user => (
-            <option key={user.nombre} value={user.nombre}>{user.nombre}</option>
+            <option key={user.email} value={user.email}>{user.email}</option>
           ))}
-        </select>
+        </select> <button onClick={generarDocumentoLaTeX}>Generar datos</button>
       </form>
-        <button onClick={generarDocumentoLaTeX}>Generar Documento</button>
+       
       <p>{estadoGeneracion}</p>
+      {peticion !== '0' && Array.isArray(prestamos) && prestamos.length > 0 && (
+        <div>
+          {prestamos.map((prestamo, index) => (
+            <div key={index}>
+              <p>Valor: {prestamo.valor}</p>
+              <p>Número de Mes: {prestamo.numMes}</p>
+            </div>
+          ))}
+        </div>
+      )}
     </Row>
+    
     </>
+    
   );
 }
 
