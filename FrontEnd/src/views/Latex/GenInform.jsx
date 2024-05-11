@@ -1,6 +1,7 @@
 import React, { useState , useEffect} from 'react';
 import '../css/GenerarDoc.css';
 import { saveAs } from 'file-saver'; 
+import Table from "react-bootstrap/Table";
 import Row from 'react-bootstrap/esm/Row';
 import { getAllUsers,getPrestamo } from "../../repositories/user";
 
@@ -117,12 +118,31 @@ export default function GenerarDocAn() {
       <p>{estadoGeneracion}</p>
       {peticion !== '0' && Array.isArray(prestamos) && prestamos.length > 0 && (
         <div>
-          {prestamos.map((prestamo, index) => (
-            <div key={index}>
-              <p>Valor: {prestamo.valor}</p>
-              <p>Número de Mes: {prestamo.numMes}</p>
-            </div>
-          ))}
+          
+          <Table   bordered > 
+            <thead style={{backgroundColor: 'lightblue '}}>
+            <tr>
+                    <th>Valor:</th>
+                    <th>numMes:</th>
+                     </tr>
+                     </thead>
+                {prestamos && prestamos.map((prestamos) => (
+              <React.Fragment key={prestamos.id}>
+                  
+                  <tbody  style={{backgroundColor:'white'}}>  
+                  <tr>
+                  
+
+                  <td> {prestamos.valor}</td>
+                  
+                  <td>{prestamos.numMes}</td>
+                  
+                </tr>
+                </tbody>
+                
+            </React.Fragment>
+            ))}
+            </Table>
         </div>
       )}
     </Row>
