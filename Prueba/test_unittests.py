@@ -41,18 +41,13 @@ class formulationTests(unittest.TestCase):
     def test_formulario(self):
 
         response= requests.post(self.base_url, json=self.valid_source_formulation_request_data)
-        print("A")
-        print(response)
-        print("A")
-        #prestamoadata = json.loads(response.json("data"))["nombre"]
 
         self.assertEqual(200,response.status_code)
 
     def test_formulario_invalido(self):
 
         response= requests.post(self.base_url, json=self.invalid_source_formulation_request_data)
-        #json_formatted_str = json.dumps(response, indent=4)
-        #print(json_formatted_str)
+
         self.assertEqual(500,response.status_code)
     
     def test_formulario_get(self):
@@ -76,7 +71,6 @@ class simulationTests(unittest.TestCase):
             "year": 2024,
         }
         cls.invalid_source_simulation_request_data = {
-            #Inserte casos prueba malos"",
             "valorcredito": 10000.0,
 			"plazo": "a",
 			"taza": "b",
@@ -92,7 +86,6 @@ class simulationTests(unittest.TestCase):
 
     def test_simulation(self):
         response= requests.post(self.base_url, json=self.valid_source_simulation_request_data)
-        #simdata = json.loads(response.json()["data"])["plazo"]
         self.assertEqual(200,response.status_code)
     
     def test_simulation_invalido(self):
