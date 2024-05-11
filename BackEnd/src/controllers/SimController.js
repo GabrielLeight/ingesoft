@@ -11,7 +11,23 @@ export default class SimController {
             res.status(500).send("Internal Server Error");
           }
 	}
-
+    async GetSim(req,res){
+        try {
+            const correo = req.body.correo;
+            console.log("correo")
+            console.log(correo)
+            const Simulaciones = await Simulaciones.findAll({
+                where: {
+                    correo: correo
+                }
+            });
+            console.log(Simulaciones)
+            res.send(Simulaciones);
+          } catch (error) {
+            console.error("Error fetching simulations:", error);
+            res.status(500).send("Internal Server Error");
+          }
+    }
     async createSims(req, res) {
         const year =  req.body.year;
         const month = req.body.month;

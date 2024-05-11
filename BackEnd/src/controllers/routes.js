@@ -12,6 +12,7 @@
 		app.delete('/users/:userId', userController.delete);
 		app.post('/login', userController.login);
 		app.get('/sims', simController.getAllSims);
+		app.post('/GetSim',simController.GetSim)
 		app.delete('/sims/:simId', simController.deleteSims);
 		app.post('/CreateSims', simController.createSims);
 		app.post('/createPrestamos', prestamoControlle.createPrestamos);

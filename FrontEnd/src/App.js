@@ -20,6 +20,7 @@ import Home from "./views/Home";
 import Simulacion from "./views/Simulacion/simulacion";
 import Formulario from "./views/Formulario/FormularioPrestamo";
 import GenerarDoc from "./views/Latex/Generardocumentos";
+import GenerarDocAn from "./views/Latex/GenInform";
 import Footer from "./components/Fotter";
 
 const PrivateRoute = () => {
@@ -56,6 +57,7 @@ export default function App() {
                                 <Route path="/login" element={<Login />} />
                                 <Route path="/simulacion" element={<Simulacion />} />5
                                 <Route path="/Generador" element={<GenerarDoc />} />
+                                <Route path="/GeneradorDocAn" element={<GenerarDocAn />} />
                                 <Route path="/prestamos" element={<Formulario />} />
                                 <Route path="/Mostrarprestamos" element={<ShowPrestamo />} />
                                 <Route path="/sims" element={<ShowSimulation />} />

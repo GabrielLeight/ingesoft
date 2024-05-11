@@ -23,6 +23,7 @@ export default function Sidebar() {
                     <React.Fragment>
                         <Link to="/users"><Nav.Link href="/users">Usuarios</Nav.Link></Link>
                         <Link to="/Generador"><Nav.Link href="/Generador">Generar informe</Nav.Link></Link>
+                        <Link to="/GeneradorDocAn"><Nav.Link href="/GeneradorDocAn">Generar informe analista</Nav.Link></Link>
                         <Link to="/sims"><Nav.Link href="/sims">Mostrar simulaciones</Nav.Link></Link>
                         <Link to="/prestamos"><Nav.Link href="/prestamos">Crear formulario préstamo</Nav.Link></Link>
                         <Link to="/Mostrarprestamos"><Nav.Link href="/Mostrarprestamos">Mostrar formulario préstamo</Nav.Link></Link>
