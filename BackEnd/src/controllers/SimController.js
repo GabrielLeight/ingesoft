@@ -41,7 +41,7 @@ export default class SimController {
                 valorUF: ufValueFloat,
             });
     
-            res.status(200);
+            res.send(simulacion);
         } catch (error) {  
             console.log(error);
             res.status(500).send({ error: "Internal Server Error" }); 

@@ -3,7 +3,6 @@ import requests
 import json
 
 
-#http://127.0.0.1:8080/CreateSims
 class formulationTests(unittest.TestCase):
     valid_source_formulation_request_data = None 
     invalid_source_formulation_request_data = None 

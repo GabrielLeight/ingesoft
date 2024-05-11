@@ -25,7 +25,7 @@ export default function Simulacion() {
 				month,
 				day,
 			});
-			
+			print(resoibse)
 		} catch (error) {
 			console.error(error);
 		}
