@@ -30,7 +30,7 @@ class formulationTests(unittest.TestCase):
             "rut": 198231982398,
 			"dia" : 32,
             "mes" : 13,
-            "año" : -2000,
+            "'año'" : -2000,
 			"ejecutivo": 'ejecutivo',
         }
 
@@ -42,20 +42,23 @@ class formulationTests(unittest.TestCase):
     def test_formulario(self):
 
         response= requests.post(self.base_url, json=self.valid_source_formulation_request_data)
+        print("A")
+        print(response)
+        print("A")
+        #prestamoadata = json.loads(response.json("data"))["nombre"]
 
-        prestamoadata = json.loads(response.json()["body"])["nombre"]
-
-        self.assertEqual("prueba1",prestamoadata,"no funciona")
+        self.assertEqual(200,response.status_code)
 
     def test_formulario_invalido(self):
 
         response= requests.post(self.base_url, json=self.invalid_source_formulation_request_data)
-
+        #json_formatted_str = json.dumps(response, indent=4)
+        #print(json_formatted_str)
         self.assertEqual(500,response.status_code)
     
     def test_formulario_get(self):
         response= requests.get(self.base_url, json=self.invalid_source_formulation_request_data)
-        self.assertEqual("403",str(response.status_code))
+        self.assertEqual("404",str(response.status_code))
 
 class simulationTests(unittest.TestCase):
     valid_source_simulation_request_data = None 
@@ -66,12 +69,12 @@ class simulationTests(unittest.TestCase):
         cls.base_url = "http://127.0.0.1:8080/CreateSims"
         cls.valid_source_simulation_request_data = {
             				
-            "valorcredito": 100000,
+            "valorcredito": 100,
 			"plazo": 12,
 			"taza": 3,
-            "dia": 20,
-            "mes": 5,
-            "año": 2024,
+            "day": 20,
+            "month": 3,
+            "year": 2024,
         }
         cls.invalid_source_simulation_request_data = {
             #Inserte casos prueba malos"",

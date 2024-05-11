@@ -45,7 +45,7 @@ export default class PrestamoController {
                 ejecutivo: ejec
 
             });
-            
+            console.log(prestamodata.correo);
             res.send(prestamodata);
             } catch (error) {   
             console.log(error);
