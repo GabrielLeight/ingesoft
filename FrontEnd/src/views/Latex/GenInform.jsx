@@ -3,7 +3,7 @@ import '../css/GenerarDoc.css';
 import { saveAs } from 'file-saver'; 
 import Table from "react-bootstrap/Table";
 import Row from 'react-bootstrap/esm/Row';
-import { getAllUsers,getPrestamo } from "../../repositories/user";
+import { getAllUsers,getPrestamos,getPrestamo } from "../../repositories/user";
 
 export default function GenerarDocAn() {
   const [estadoGeneracion, setEstadoGeneracion] = useState('');
@@ -36,7 +36,7 @@ export default function GenerarDocAn() {
 
   const fetchData = async () => {
     try {
-      const response = await getAllUsers();
+      const response = await getPrestamos();
       setDatos(response);
     } catch (error) {
       console.error('Error fetching data:', error);
@@ -51,11 +51,10 @@ export default function GenerarDocAn() {
 
     setEstadoGeneracion('Generando documento...');
 
-    const selectedUser = datos.find(user => user.email === peticion);
-    alert(selectedUser.email)
+    const selectedUser = datos.find(user => user.correo === peticion);
     try {
         const response2 = await getPrestamo({ correo:selectedUser.email });
-        alert(response2[0].id)
+        alert(response2[0])
         
     } catch (error) {
         console.error('Error fetching data:', error);
@@ -89,7 +88,7 @@ export default function GenerarDocAn() {
   return (
     <>
       <Row className="no-gutters" style={{ minHeight: '100vh', width: '100%', paddingLeft: '5%', height: '100%', backgroundColor: 'aliceblue' }}>  
-      {/* no parece necesario edl correo del supervisor para los informes de un usuario
+      {/* no parece necesario el correo del supervisor para los informes de un usuario
       <form style={{ width: '80%' }}>
         <h1 style={{ color: 'darkslategrey', paddingLeft: '20%', paddingBottom: '5%' }}>Generador de documentos LaTeX</h1>
         <label htmlFor="supervisorCorreo">Ingrese el correo del supervisor:</label>
@@ -110,9 +109,9 @@ export default function GenerarDocAn() {
         <select name="peticion" id="peticion" value={peticion} onChange={(e) => setPeticion(e.target.value)}>
           <option value="0">Seleccione un usuario</option>
           {datos.map(user => (
-            <option key={user.email} value={user.email}>{user.email}</option>
+            <option key={user.correo} value={user.correo}>{user.correo}</option>
           ))}
-        </select> <button onClick={generarDocumentoLaTeX}>Generar datos</button>
+        </select> 
       </form>
        
       <p>{estadoGeneracion}</p>

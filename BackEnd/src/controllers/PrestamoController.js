@@ -4,15 +4,22 @@ export default class PrestamoController {
     async mostrarPrestamos(req,res){
         try {
             const ejec = req.body.ejecutivo;
-            console.log("Ejecutivo")
-            console.log(ejec)
-            const Prestamos = await Prestamo.findAll({
-                where: {
-                    ejecutivo: ejec
+
+            const whereClause = ejec ? { where: { ejecutivo: ejec } } : {};
+
+            const Prestamos = await Prestamo.findAll(whereClause);
+            const seen = {};
+            const uniqueUsers = [];
+        
+            for (const prestamo of Prestamos) {
+                if (!seen[prestamo.ejecutivo]) {
+                    seen[prestamo.ejecutivo] = true;
+                    uniqueUsers.push(prestamo);
                 }
-            });
-            console.log(Prestamos)
-            res.send(Prestamos);
+            }
+        
+            console.log(uniqueUsers);
+            res.send(uniqueUsers);
           } catch (error) {
             console.error("Error fetching simulations:", error);
             res.status(500).send("Internal Server Error");
@@ -28,7 +35,7 @@ export default class PrestamoController {
                     correo: correo
                 }
             });
-            console.log(Prestamos[0].id)
+            console.log(Prestamos[0])
             res.send(Prestamos);
           } catch (error) {
             console.error("Error fetching simulations:", error);
