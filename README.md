@@ -8,3 +8,6 @@ Este es el repositorio del Grupo 25, cuyos integrantes son:
 * **Integrante 4**- Angeline Rodriguez  202173594-1
 
 * **Tutor**: José Southerland
+
+* Video Hito 4:
+https://youtu.be/bG3CP1UMw3A
