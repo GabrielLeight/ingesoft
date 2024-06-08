@@ -54,13 +54,21 @@ export default function GenerarDocAn() {
     const selectedUser = datos.find(user => user.correo === peticion);
     try {
         const response2 = await getPrestamo({ correo:selectedUser.email });
-        alert(response2[0])
+        prestamos = response2;
         
     } catch (error) {
         console.error('Error fetching data:', error);
     }
-    /* 
-    const template = `
+      if (prestamos.length === 0) {
+        alert('No se encontraron préstamos para este usuario.');
+        setEstadoGeneracion('No se encontraron préstamos.');
+        return;
+      }
+    
+      const totalValor = prestamos.reduce((sum, prestamo) => sum + parseFloat(prestamo.valor), 0)
+      const totalMeses = prestamos.reduce((sum, prestamo) => sum + parseInt(prestamo.numMes), 0);
+      const promedioValor = totalValor / prestamos.length;
+      const template = `
       \\documentclass{article}
       \\title{Informe de financiera}
       \\author{Nro de peticion: ${selectedUser.peticion}}
@@ -71,6 +79,9 @@ export default function GenerarDocAn() {
       Numero de cuenta: ${selectedUser.id}\\\\
       Fecha de la persona: ${selectedUser.fecha}
       Informacion sensible: no\\\\
+      \\section{Préstamos}
+      Promedio de valor de los préstamos: ${promedioValor}\\\\
+      Total de meses: ${totalMeses}\\\\
       \\section{Comentarios}
       \\subsection{Comentarios de venta}
       aqui se va añadir informacion 
@@ -81,7 +92,7 @@ export default function GenerarDocAn() {
 
     const blob = new Blob([template], { type: 'application/x-latex' });
     saveAs(blob, `Informe_Financiera_${selectedUser.peticion}.tex`);
-    */
+     /* */
     setEstadoGeneracion('Documento generado y guardado.');
   };
 
@@ -102,7 +113,7 @@ export default function GenerarDocAn() {
             ))}
         </select>
       </form>      */}
-      <form style={{ width: '80%' }}>
+      <form style={{ width: '40%' }}>
         
         <label htmlFor="peticion">Nombre del usuario:</label>
         <br />
@@ -112,6 +123,7 @@ export default function GenerarDocAn() {
             <option key={user.correo} value={user.correo}>{user.correo}</option>
           ))}
         </select> 
+        <button onClick={generarDocumentoLaTeX}>Generar Documento</button>
       </form>
        
       <p>{estadoGeneracion}</p>
@@ -120,8 +132,8 @@ export default function GenerarDocAn() {
           
           <Table   bordered > 
             <thead style={{backgroundColor: 'lightblue '}}>
-            <tr>
-                    <th>Valor:</th>
+                  <tr>
+                    <th>Valor: </th>
                     <th>numMes:</th>
                      </tr>
                      </thead>
@@ -131,7 +143,6 @@ export default function GenerarDocAn() {
                   <tbody  style={{backgroundColor:'white'}}>  
                   <tr>
                   
-
                   <td> {prestamos.valor}</td>
                   
                   <td>{prestamos.numMes}</td>
