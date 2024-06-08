@@ -1,5 +1,8 @@
 import { Simulaciones } from '../models/Simulacion.js';
+import sequelize from '../database.js';
 import axios from "axios";
+
+const transaction = sequelize.transaction();
 
 export default class SimController {
 	async getAllSims(req, res) {
@@ -30,7 +33,8 @@ export default class SimController {
             
             const CuotaENUF = valorcredito / ((1 - Math.pow(tasa + 1, -plazo)) / tasa);
             const valortotal = valorcredito * ufValueFloat + CuotaENUF * plazo;
-    
+
+            try {
             const simulacion = await Simulaciones.create({
                 dia: day,
                 mes: month,
@@ -39,9 +43,13 @@ export default class SimController {
                 plazo: plazo,
                 valorcredito: valortotal,
                 valorUF: ufValueFloat,
-            });
-    
+            }, { transaction });
+
             res.send(simulacion);
+            } catch (error) {  
+                console.log(error);
+                res.status(500).send({ error: "Internal Server Error" }); 
+            }
         } catch (error) {  
             console.log(error);
             res.status(500).send({ error: "Internal Server Error" }); 
