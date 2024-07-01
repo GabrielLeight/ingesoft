@@ -54,5 +54,10 @@ const getPrestamos = (data)=>
 	.post(`${process.env.REACT_APP_BACKEND_URL}/mostrarPrestamos`,data)
 	.then((res) => res.data);
 
+const getPrestamodetallado = (data)=>
+	axios
+	.post(`${process.env.REACT_APP_BACKEND_URL}/getPrestamodetallado`,data)
+	.then((res) => res.data);
+
 // eslint-disable-nextline
-export { deleteUser, updateUser, createUser, getAllUsers, getUser, login, CreateSims, getAllSims,deleteSym, createPrestamos, deletePrestamos , getPrestamos, getPrestamo};
+export { deleteUser, updateUser, createUser, getAllUsers, getUser, login, CreateSims, getAllSims,deleteSym, createPrestamos, deletePrestamos , getPrestamos, getPrestamo, getPrestamodetallado};

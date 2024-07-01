@@ -32,14 +32,14 @@ Prestamo.init({
     type: Sequelize.DataTypes.INTEGER,
   },
 
-  dia: {
+  day: {
     type: Sequelize.DataTypes.INTEGER,
   },
-  mes: { 
+  month: { 
     type:Sequelize.DataTypes.INTEGER
   },
 
-  año:{
+  year:{
     type: Sequelize.DataTypes.INTEGER,
   }}, {
     sequelize,

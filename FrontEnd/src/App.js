@@ -15,6 +15,7 @@ import UserAdd from "./views/users/create";
 import Login from "./views/users/login";
 import ShowSimulation from "./views/Simulacion/showSimulaciones";
 import ShowPrestamo from "./views/Formulario/Mostrarprestamo";
+import GenerarDocdet from "./views/Latex/Generarinformedevalores";
 
 import Home from "./views/Home";
 import Simulacion from "./views/Simulacion/simulacion";
@@ -60,6 +61,7 @@ export default function App() {
                                 <Route path="/GeneradorDocAn" element={<GenerarDocAn />} />
                                 <Route path="/prestamos" element={<Formulario />} />
                                 <Route path="/Mostrarprestamos" element={<ShowPrestamo />} />
+                                <Route path="/Mostrarprestamosdet" element={<GenerarDocdet />} />
                                 <Route path="/sims" element={<ShowSimulation />} />
                             </Routes>
                         </Col>

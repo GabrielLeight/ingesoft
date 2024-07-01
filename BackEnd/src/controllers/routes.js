@@ -13,6 +13,8 @@
 		app.post('/login', userController.login);
 		app.get('/sims', simController.getAllSims);
 		app.post('/getPrestamo',prestamoControlle.getPrestamo)
+		
+		app.post('/getPrestamodetallado',prestamoControlle.getPrestamodetallado)
 		app.delete('/sims/:simId', simController.deleteSims);
 		app.post('/CreateSims', simController.createSims);
 		app.post('/createPrestamos', prestamoControlle.createPrestamos);

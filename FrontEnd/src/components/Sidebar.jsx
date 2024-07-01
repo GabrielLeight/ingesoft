@@ -24,6 +24,7 @@ export default function Sidebar() {
                         <Link to="/users"><Nav.Link href="/users">Usuarios</Nav.Link></Link>
                         <Link to="/Generador"><Nav.Link href="/Generador">Generar informe</Nav.Link></Link>
                         <Link to="/GeneradorDocAn"><Nav.Link href="/GeneradorDocAn">Generar informe analista</Nav.Link></Link>
+                        <Link to="/Mostrarprestamosdet"><Nav.Link href="/Mostrarprestamosdet">Generar informe analista</Nav.Link></Link>
                         <Link to="/sims"><Nav.Link href="/sims">Mostrar simulaciones</Nav.Link></Link>
                         <Link to="/Mostrarprestamos"><Nav.Link href="/Mostrarprestamos">Mostrar formulario préstamo</Nav.Link></Link>
                     </React.Fragment>
