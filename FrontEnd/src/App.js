@@ -25,7 +25,6 @@ import GenerarDocAn from "./views/Latex/GenInform";
 import Footer from "./components/Fotter";
 
 const PrivateRoute = () => {
-    const isAuthenticated = JSON.parse(sessionStorage.getItem('authToken'));
     const permiso = sessionStorage.getItem('permiso');
 
     return permiso === 'true' ? <Outlet /> : <Navigate to="/home" />;

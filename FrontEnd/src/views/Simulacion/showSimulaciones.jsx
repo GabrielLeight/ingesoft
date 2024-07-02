@@ -10,7 +10,7 @@ import Sidebar from "../../components/Sidebar";
 
 export default function ShowSimulation() {
   const [data, setData] = useState(null);
-  const [error, setError] = useState(null);
+  const [error] = useState(null);
 
     useEffect(() => {
       const fetchData = async () => {
@@ -63,7 +63,7 @@ export default function ShowSimulation() {
                     <th>Dia:</th><th>Mes:</th><th>Año:</th><th>Tasa:</th><th>ValorUF:</th><th>Valor Total Credito:</th> <th></th></tr></thead>
                 {error && <tr><td>Error loading data</td></tr>}
                 {!error && !data && <tr><td>Loading...</td></tr>}
-                {data && data.map((item) => (
+                {data?.data.map((item) => (
               <React.Fragment key={item.id}>
                   
                   <tbody  style={{backgroundColor:'white'}}>  

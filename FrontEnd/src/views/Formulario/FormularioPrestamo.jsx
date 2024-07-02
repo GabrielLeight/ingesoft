@@ -6,7 +6,6 @@ import Row from "react-bootstrap/Row";
 
 
 export default function Formulario() {
-	const history = useNavigate ();
 
 	const [state, setstate] = useState({});
 

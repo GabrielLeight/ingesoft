@@ -7,13 +7,9 @@ import { getAllUsers,getPrestamos,getPrestamo } from "../../repositories/user";
 
 export default function GenerarDocAn() {
   const [estadoGeneracion, setEstadoGeneracion] = useState('');
-  const [Correo,setCorreo] = useState('0');
-
-
   const [datos, setDatos] = useState([]);
   const [peticion, setPeticion] = useState('0');
   const [prestamos, setPrestamos] = useState([]);
-  const [motivoDerivacion, setMotivoDerivacion] = useState('0');
 
   useEffect(() => {
     const fetchPrestamosData = async () => {
@@ -54,7 +50,7 @@ export default function GenerarDocAn() {
     const selectedUser = datos.find(user => user.correo === peticion);
     try {
         const response2 = await getPrestamo({ correo:selectedUser.email });
-        prestamos = response2;
+        setPrestamos(response2);
         
     } catch (error) {
         console.error('Error fetching data:', error);

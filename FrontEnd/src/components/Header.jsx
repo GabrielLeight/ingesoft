@@ -5,7 +5,6 @@ import LaClaveImage  from '../images/LaClave.png'
 import Logout from '../views/users/Logout'
 
 export default function Header() {
-    const nombre = useSelector((store => store.username));
     const isAuthenticated = JSON.parse(sessionStorage.getItem('authToken'))
     return (
        <Navbar style={{backgroundColor: "#87ceeb"}} className="d-flex justify-content-between align-items-center">

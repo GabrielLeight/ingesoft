@@ -7,12 +7,9 @@ import { getPrestamodetallado, getPrestamos, getPrestamo } from "../../repositor
 
 export default function GenerarDocdet() {
   const [estadoGeneracion, setEstadoGeneracion] = useState('');
-  const [Correo, setCorreo] = useState('0');
   const [datos, setDatos] = useState([]);
   const [peticion, setPeticion] = useState('0');
   const [prestamos, setPrestamos] = useState([]);
-  const [motivoDerivacion, setMotivoDerivacion] = useState('0');
-
   useEffect(() => {
     const fetchPrestamosData = async () => {
       try {

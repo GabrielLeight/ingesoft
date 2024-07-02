@@ -6,7 +6,6 @@ import Row from "react-bootstrap/Row";
 import Sidebar from "../../components/Sidebar";
 
 export default function Simulacion() {
-	const history = useNavigate ();
 
 	const [state, setstate] = useState({});
 
@@ -17,7 +16,7 @@ export default function Simulacion() {
 		const month = selectedDate.getMonth() +1; 
 		const day = selectedDate.getDate();
 		try {
-			const response = await CreateSims({
+			CreateSims({
 				valorcredito: state.valor,
 				plazo: state.plazo,
 				taza: state.taza,
@@ -25,7 +24,6 @@ export default function Simulacion() {
 				month,
 				day,
 			});
-			print(resoibse)
 		} catch (error) {
 			console.error(error);
 		}

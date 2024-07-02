@@ -3,79 +3,10 @@ import '../css/GenerarDoc.css';
 import { saveAs } from 'file-saver'; 
 import Row from 'react-bootstrap/esm/Row';
 import { getAllUsers } from "../../repositories/user";
-/* 
-const datos = [
-  {
-    nombre: 'Id',
-    codigoCuenta: '----',
-    fecha: '9-12-2023',
-    peticion: '0',
-    Nombre: "nada",
-    Fecha: "06/05/2007",
-    ValorUF: "90.000",
-    Total: "b",
-    Nro: "12",
-    Interes: '6'
-  },
 
-
-
-  {
-    nombre: 'Juan',
-    codigoCuenta: '12345',
-    fecha: '3-11-2023',
-    peticion: '1',
-    Nombre: "test",
-    Fecha: "02/01/2003",
-    ValorUF: "64.000",
-    Total: "X",
-    Nro: "123",
-    Interes: '23'
-  },
-  {
-    nombre: 'Ana',
-    codigoCuenta: '54321',
-    fecha: '5-12-2023',
-    peticion: '3',
-    Nombre: "caso dos",
-    Fecha: "04/03/2005",
-    ValorUF: "70.000",
-    Total: "Z",
-    Nro: "789",
-    Interes: '40'
-  },
-  {
-    nombre: 'Pedro',
-    codigoCuenta: '98765',
-    fecha: '7-12-2023',
-    peticion: '4',
-    Nombre: "caso tres",
-    Fecha: "05/04/2006",
-    ValorUF: "80.000",
-    Total: "W",
-    Nro: "1011",
-    Interes: '50'
-  },
-  {
-    nombre: 'Luis',
-    codigoCuenta: '13579',
-    fecha: '9-12-2023',
-    peticion: '5',
-    Nombre: "caso cuatro",
-    Fecha: "06/05/2007",
-    ValorUF: "90.000",
-    Total: "V",
-    Nro: "1213",
-    Interes: '60'
-  }
-];
-*/
 
 export default function GenerarDoc() {
   const [estadoGeneracion, setEstadoGeneracion] = useState('');
-  const [peticion1,setpeticion1] = useState('0');
-  const [peticion2,setpeticion2] = useState('0');
-  const [peticion3,setpeticion3] = useState('0');
 
   const [datos, setDatos] = useState([]);
   const [peticion, setPeticion] = useState('0');

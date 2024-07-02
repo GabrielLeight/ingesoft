@@ -43,7 +43,7 @@ export default class SimController {
                 plazo: plazo,
                 valorcredito: valortotal,
                 valorUF: ufValueFloat,
-            }, /*{ transaction }*/);
+            });
             console.log(simulacion)
             res.send(simulacion);
             } catch (error) {  
